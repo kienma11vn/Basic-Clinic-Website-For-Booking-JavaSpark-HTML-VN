@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Đánh Giá Chất Lượng Khám Chữa Bệnh</title>
+    <link rel="stylesheet" href="XemLichKH.css"> </head>
+<body>
+    <header class="full-width-header">
+        <div class="welcome-banner">
+            Xin chào, Người dùng <a href="DanhGia.html"><span id="usernameDisplay">khachhang00</span></a>! <span>⬅ Nhấn để quay lại</span>
+        </div>
+    </header>
+
+    <main class="container-management">
+        <div class="table-section">
+            <h2 style="margin-bottom: 20px;">Đánh giá chất lượng khám chữa bệnh</h2>
+            <table id="danhGiaTable">
+                <thead>
+                    <tr>
+                        <th>Mã đặt lịch</th>
+                        <th>Bác sĩ</th>
+                        <th>Ngày khám</th>
+						<th>Dịch vụ</th>
+                        <th>Khách đến khám</th>
+                        <th>Trạng thái đánh giá</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    </tbody>
+            </table>
+        </div>
+		
+		<div class="action-section">
+            <button class="action-btn find" onclick="findLK()">Tìm kiếm lịch khám</button>
+        </div>
+    </main>
+
+    <div id="ratingModal" class="modal" style="display: none;">
+        <div class="modal-content">
+            <h3>Đánh giá lịch: <span id="modalMaDL"></span></h3>
+            <input type="hidden" id="oldRatingStore">
+            
+            <label for="score">Chấm điểm đánh giá (1-10):</label>
+            <select id="score">
+                <option value="10">10 - Rất hài lòng</option>
+                <option value="9">9 - Hài lòng</option>
+                <option value="8">8 - Tương đối hài lòng</option>
+                <option value="7">7 - Ổn</option>
+                <option value="6">6 - Khá ổn</option>
+                <option value="5">5 - Trung bình</option>
+                <option value="4">4 - Tạm được</option>
+                <option value="3">3 - Hơi tệ </option>
+                <option value="2">2 - Tệ</option>
+                <option value="1">1 - Rất tệ</option>
+            </select>
+
+            <label for="comment">Nội dung đánh giá:</label>
+            <textarea id="comment" rows="4" style="width: 100%; border-radius: 5px; padding: 10px; margin-top: 5px;" placeholder="Nhập cảm nhận của bạn về thái độ phục vụ..."></textarea>
+
+            <div class="modal-actions" style="margin-top: 20px; display: flex; gap: 10px; justify-content: flex-end;">
+                <button class="action-btn add" onclick="saveRating()">Lưu đánh giá</button>
+                <button class="action-btn delete" onclick="closeModal()">Đóng</button>
+            </div>
+        </div>
+    </div>
+	
+	<div id="searchModal" class="modal">
+		<div class="modal-content">
+			<h3>Tìm kiếm lịch khám</h3>
+			<div id="searchForm">
+				<label>Mã đặt lịch:</label>
+				<input type="text" id="searchMaDL" placeholder="Nhập mã đặt lịch...">
+
+				<label>Ngày khám:</label>
+				<input type="date" id="searchNgay">
+
+				<label>Tên Bác sĩ:</label>
+				<input type="text" id="searchBacSi" placeholder="Nhập tên bác sĩ...">
+
+				<label>Dịch vụ:</label>
+				<input type="text" id="searchDV" placeholder="Nhập tên dịch vụ...">
+
+				<div class="modal-actions">
+					<button class="action-btn find" onclick="executeSearch()">Tìm ngay</button>
+					<button class="action-btn delete" onclick="closeSearchModal()">Đóng</button>
+				</div>
+			</div>
+		</div>
+	</div>
+
+    <script src="DanhGiaCL.js"></script>
+</body>
+</html>

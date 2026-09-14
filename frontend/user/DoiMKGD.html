@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Đổi Mật Khẩu</title>
+    <link rel="stylesheet" href="DangkyDangnhapKhoiphuc.css">
+</head>
+<body>
+    <div class="card-wrapper">
+        <div class="info-section">
+            <div class="logo-group">
+                <div class="logo-icon">🔐</div>
+                <div class="brand-name">Phòng khám An Tâm</div>
+            </div>
+            <h1>Bảo mật tài khoản</h1>
+            <p>Sử dụng mật khẩu mạnh để bảo vệ thông tin sức khỏe của bạn.</p>
+			<p>© 2026 PHÒNG KHÁM AN TÂM. Tất cả quyền được bảo lưu.</p>
+        </div>
+
+        <div class="form-section">
+            <h2>Đổi mật khẩu</h2>
+            <form id="doimk-form">
+                <div class="input-group">
+                    <label>Mật khẩu hiện tại:</label>
+                    <input type="password" id="oldPass" placeholder="Nhập mật khẩu hiện tại" required>
+                </div>
+                <div class="input-group">
+                    <label>Mật khẩu mới:</label>
+                    <input type="password" id="newPass" placeholder="6-15 ký tự" required minlength="6" maxlength="15">
+                </div>
+                <div class="input-group">
+                    <label>Xác nhận mật khẩu mới:</label>
+                    <input type="password" placeholder="Xác nhận lại mật khẩu" id="confirmPass" required>
+                </div>
+                <button type="submit" class="btn-main" id="btnSubmit">Cập nhật mật khẩu</button>
+                <button type="button" class="btn-main" onclick="window.location.href='../PK_TrangChu.html'">Quay lại trang chủ</button>
+            </form>
+        </div>
+    </div>
+    <script src="DoiMK.js"></script>
+</body>
+</html>

@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quản Lý Lịch Trình Bác Sĩ</title>
+    <link rel="stylesheet" href="QLLichBacSi.css">
+</head>
+
+<body>
+    <header class="full-width-header">
+        <div class="welcome-banner">
+            Xin chào, Lễ tân <a href="QLBacSiVaLich.html"><span id="usernameDisplay">letan00</span></a>! <span>⬅ Nhấn để quay lại</span>
+        </div>
+    </header>
+
+    <main class="container-management">
+        <div class="table-section">
+            <table id="customerTable">
+                <thead>
+                    <tr>
+                        <th style="text-align: center;">Mã đặt lịch</th>
+                        <th>Ngày khám</th>
+                        <th>Bác sĩ</th>
+                        <th>Bệnh nhân</th>
+                        <th>Dịch vụ</th>
+						<th>Tình trạng</th>
+						<th>Khách đến khám</th>
+						<th>Đánh giá</th>
+                    </tr>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="action-section">
+            <button class="action-btn add" onclick="addLBS()">Thêm lịch khám</button>
+            <button class="action-btn edit" onclick="editLBS()">Sửa thông tin</button>
+            <button class="action-btn delete" onclick="deleteLBS()">Xóa lịch khám</button>
+            <button class="action-btn find" onclick="findLBS()">Tìm kiếm lịch khám</button>
+        </div>
+    </main>
+	
+	<div id="addBookingModal" class="modal">
+		<div class="modal-content">
+			<h3>Thêm lịch khám mới</h3>
+			
+			<label>Bệnh nhân:</label>
+			<select id="addMaKH" required>
+				<option value="">-- Chọn bệnh nhân --</option>
+			</select>
+
+			<label>Chuyên khoa:</label>
+			<select id="addSpecialty" onchange="handleSpecialtyChange()">
+				<option value="">-- Chọn chuyên khoa --</option>
+			</select>
+
+			<label>Bác sĩ:</label>
+			<select id="addMaBS" disabled required>
+				<option value="">-- Chọn bác sĩ --</option>
+			</select>
+
+			<label>Dịch vụ:</label>
+			<select id="addMaDV" disabled required>
+				<option value="">-- Chọn dịch vụ --</option>
+			</select>
+
+			<label>Ngày khám:</label>
+			<input type="date" id="txtNgayKham" required>
+
+			<label>Giờ khám:</label>
+			<select id="txtGioKham" required>
+				<option value="">-- Chọn giờ --</option>
+				<option value="08:00">08:00</option>
+				<option value="10:00">10:00</option>
+				<option value="14:00">14:00</option>
+				<option value="16:00">16:00</option>
+			</select>
+
+			<label>Triệu chứng:</label>
+			<textarea id="txtTrieuChung" rows="3" style="width: 100%; border-radius: 4px; border: 1px solid #ccc;"></textarea>
+
+			<div style="margin-top: 20px; display: flex; gap: 10px;">
+				<button class="action-btn add" onclick="executeAddBooking()">Lưu lịch</button>
+				<button class="action-btn find" onclick="closeModal()">Đóng</button>
+			</div>
+		</div>
+	</div>
+	
+	<div id="editBookingModal" class="modal">
+		<div class="modal-content">
+			<h3>Sửa thông tin lịch khám</h3>
+			<input type="hidden" id="editMaDL"> 
+
+			<label>Bệnh nhân:</label>
+			<input type="text" id="editTenBN" disabled style="background-color: #f0f0f0;">
+			<input type="hidden" id="editMaKH">
+
+			<label>Chuyên khoa:</label>
+			<select id="editSpecialty" onchange="handleSpecialtyChangeEdit()">
+				<option value="">-- Chọn chuyên khoa --</option>
+			</select>
+
+			<label>Bác sĩ:</label>
+			<select id="editMaBS" required>
+				<option value="">-- Chọn bác sĩ --</option>
+			</select>
+
+			<label>Dịch vụ:</label>
+			<select id="editMaDV" required>
+				<option value="">-- Chọn dịch vụ --</option>
+			</select>
+
+			<label>Ngày khám:</label>
+			<input type="date" id="editNgayKham" required>
+
+			<label>Giờ khám:</label>
+			<select id="editGioKham" required>
+				<option value="">-- Chọn giờ --</option>
+				<option value="08:00">08:00</option>
+				<option value="10:00">10:00</option>
+				<option value="14:00">14:00</option>
+				<option value="16:00">16:00</option>
+			</select>
+
+			<label>Triệu chứng:</label>
+			<textarea id="editTrieuChung" rows="3" style="width: 100%; border-radius: 4px; border: 1px solid #ccc; padding: 8px;"></textarea>
+
+			<div style="margin-top: 20px; display: flex; gap: 10px;">
+				<button class="action-btn add" style="background-color: #7c01ce;" onclick="executeEditBooking()">Cập nhật</button>
+				<button class="action-btn find" onclick="closeModal()">Hủy</button>
+			</div>
+		</div>
+	</div>
+	
+	<div id="searchModal" class="modal">
+		<div class="modal-content">
+			<h3>Tìm kiếm nâng cao</h3>
+			<label>Mã đặt lịch:</label>
+			<input type="text" id="searchMaDL">			
+			<label>Tên Bệnh nhân:</label>
+			<input type="text" id="searchTenBN">
+			<label>Tên Bác sĩ:</label>
+			<input type="text" id="searchTenBS">
+			<label>Ngày khám:</label>
+			<input type="date" id="searchNgayKham">
+			
+			<div style="margin-top: 20px; display: flex; gap: 10px;">
+				<button class="action-btn add" onclick="executeSearch()">Tìm kiếm</button>
+				<button class="action-btn find" onclick="closeModal()">Đóng</button>
+			</div>
+		</div>
+	</div>
+	
+	<div id="deleteModal" class="modal">
+		<div class="modal-content">
+			<h3 style="color: #ce0e00;">Xác nhận xóa lịch khám</h3>
+			<p style="margin: 15px 0;">Bạn có chắc chắn muốn xóa lịch khám này không? Thao tác này không thể hoàn tác.</p>
+			<div style="background: #f9f9f9; padding: 10px; border-radius: 5px; margin-bottom: 15px; border: 1px solid #eee;">
+				<p><strong>Mã đặt lịch:</strong> <span id="delMaDL" style="color: blue; font-weight: bold;"></span></p>
+				<p><strong>Bệnh nhân:</strong> <span id="delTenBN"></span></p>
+				<p><strong>Ngày khám:</strong> <span id="delNgayDat"></span></p>
+			</div>
+			<div style="display: flex; gap: 10px;">
+				<button class="action-btn delete" style="flex:1" onclick="executeDelete()">Xác nhận Xóa</button>
+				<button class="action-btn find" style="flex:1" onclick="closeModal()">Hủy bỏ</button>
+			</div>
+		</div>
+	</div>
+
+    <script src="QLLichBacSi.js"></script>
+</body>
+
+</html>

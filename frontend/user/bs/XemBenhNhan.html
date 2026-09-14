@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Xem Thông Tin Bệnh Nhân</title>
+    <link rel="stylesheet" href="XemBenhNhan.css">
+</head>
+
+<body>
+    <header class="full-width-header">
+        <div class="welcome-banner">
+            Xin chào, Bác sĩ <a href="../BSGD.html"><span id="usernameDisplay">bacsi00</span></a>! <span>⬅ Nhấn để quay lại</span>
+        </div>
+    </header>
+
+    <main class="container-management">
+        <div class="table-section">
+            <table id="customerTable">
+                <thead>
+                    <tr>
+                        <th>Họ tên bệnh nhân</th>
+                        <th>Ngày sinh</th>
+						<th>Giới tính</th>
+                        <th>Số điện thoại</th>                        
+                        <th>Email</th>
+                    </tr>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="action-section">
+            <button class="action-btn find" onclick="findCustomer()">Tìm kiếm bệnh nhân</button>
+        </div>
+
+    </main>
+	
+	<div id="searchModal" class="modal">
+		<div class="modal-content">
+			<h3>Tìm kiếm bệnh nhân</h3>
+			<div id="searchForm">
+				<label>Họ tên bệnh nhân:</label>
+				<input type="text" id="searchBN" placeholder="Nhập họ tên bệnh nhân...">
+
+				<label>Ngày sinh:</label>
+				<input type="date" id="searchNgay">
+
+				<label>Giới tính:</label>
+				<select id="searchGioiTinh">
+					<option value="">Tất cả giới tính</option>
+					<option value="Nam">Nam</option>
+					<option value="Nu">Nữ</option>
+				</select>
+
+				<div class="modal-actions">
+					<button class="action-btn find" onclick="executeSearch()">Tìm kiếm</button>
+					<button class="action-btn delete" onclick="closeSearchModal()">Đóng</button>
+				</div>
+			</div>
+		</div>
+	</div>
+
+    <script src="XemBenhNhan.js"></script>
+</body>
+
+</html>

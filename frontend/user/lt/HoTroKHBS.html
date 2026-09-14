@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Hỗ Trợ Khách Hàng & Bác Sĩ</title>
+    <link rel="stylesheet" href="HoTroKHBS.css">
+</head>
+
+<body>
+    <header class="full-width-header">
+        <div class="welcome-banner">
+            Xin chào, Lễ tân <a href="QLDatLich.html"><span id="usernameDisplay">letan00</span></a>! <span>⬅ Nhấn
+                để quay
+                lại</span>
+        </div>
+    </header>
+
+    <main class="main-content">
+		<div class="list-container">
+			<h3>Danh sách liên hệ đã nhận</h3>
+			<div id="contactList">
+				</div>
+		</div>
+		
+		<div class="action-section">
+			<button class="action-btn find" onclick="findLH()">Tìm kiếm liên hệ</button>
+		</div>
+		
+	</main>
+
+	<div id="detailModal" class="modal" style="display:none;">
+		<div class="modal-content" style="width: 550px;">
+			<span onclick="closeDetail()" style="float:right; cursor:pointer;">&times;</span>
+			<h2 id="detTieuDe" style="color:#149c3d">Chi tiết yêu cầu</h2>
+			<hr>
+			<p><strong>Mã YC:</strong> <span id="detMa"></span></p>
+			<p><strong>Người gửi:</strong> <span id="detNguoiGui"></span></p>
+			<p><strong>Ngày gửi:</strong> <span id="detNgayYC"></span></p>
+			<p><strong>Nội dung yêu cầu:</strong>
+			<div id="detNoiDung" style="background:#f9f9f9; padding:15px; border:1px solid #ddd; margin:10px 0; border-radius:5px;"></div>
+			
+			<div id="replyHistory" style="margin-bottom: 15px;">
+				<p><strong>Phản hồi trước đó:</strong></p>
+				<div id="detTraLoi" style="background:#e8f5e9; padding:10px; border-left:4px solid #149c3d;"></div>
+			</div>
+
+			<div id="replyForm">
+				<label><strong>Nội dung trả lời mới:</strong></label>
+				<textarea id="replyInput" rows="4" style="width:100%; border-radius:5px; padding:10px; margin-top:5px;" placeholder="Nhập lời giải đáp..."></textarea>
+				<button onclick="submitReply()" class="action-btn add" style="width:100%; margin-top:10px;">Gửi phản hồi</button>
+			</div>
+		</div>
+	</div>
+	
+	<div id="searchModal" class="modal">
+		<div class="modal-content">
+			<h3>Tìm kiếm liên hệ</h3>
+			<label>Tiêu đề:</label>
+			<input type="text" id="searchTieuDe" placeholder="Nhập tiêu đề cần tìm...">
+
+			<label>Ngày gửi:</label>
+			<input type="date" id="searchNgay">
+			
+			<label>Trạng thái trả lời:</label>
+			<div style="display: flex; gap: 15px; margin-top: 5px;">
+				<label style="font-weight: normal;">
+					<input type="checkbox" id="chkChuaTL" checked> Chưa trả lời
+				</label>
+				<label style="font-weight: normal;">
+					<input type="checkbox" id="chkDaTL" checked> Đã trả lời
+				</label>
+			</div>
+
+			<div class="modal-actions">
+				<button class="action-btn find" onclick="executeSearch()">Tìm kiếm</button>
+				<button class="action-btn delete" onclick="closeSearchModal()">Đóng</button>
+			</div>
+		</div>
+	</div>
+	
+	<div id="searchModal" class="modal">
+		<div class="modal-content">
+			<h3>Tìm kiếm liên hệ</h3>
+			<label>Tiêu đề:</label>
+			<input type="text" id="searchTieuDe" placeholder="Nhập tiêu đề cần tìm...">
+
+			<label>Ngày gửi:</label>
+			<input type="date" id="searchNgay">
+			
+			<label>Trạng thái trả lời:</label>
+			<div style="display: flex; gap: 15px; margin-top: 5px;">
+				<label style="font-weight: normal;">
+					<input type="checkbox" id="chkChuaTL" checked> Chưa trả lời
+				</label>
+				<label style="font-weight: normal;">
+					<input type="checkbox" id="chkDaTL" checked> Đã trả lời
+				</label>
+			</div>
+
+			<div class="modal-actions">
+				<button class="action-btn find" onclick="executeSearch()">Tìm kiếm</button>
+				<button class="action-btn delete" onclick="closeSearchModal()">Đóng</button>
+			</div>
+		</div>
+	</div>
+	
+    <script src="HoTroKHBS.js"></script>
+</body>
+
+</html>

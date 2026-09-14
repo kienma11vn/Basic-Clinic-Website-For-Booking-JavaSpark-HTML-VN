@@ -1,0 +1,70 @@
+/* Shared.css */
+
+/* Nhúng Font Icon Google */
+@import url('https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap');
+
+.material-symbols-outlined {
+    font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+    font-size: 32px; /* Kích thước icon cho nút lớn */
+    margin-bottom: 10px;
+    display: block;
+}
+
+/* Layout bên trong nút */
+.btn-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.btn-title {
+    display: block;
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.btn-desc {
+    display: block;
+    font-size: 14px;
+    font-weight: normal;
+    color: #555; /* Màu chữ mô tả nhẹ nhàng */
+}
+
+.footer-simple {
+    width: 100%;
+    /* Giảm padding để chiều cao footer vừa vặn hơn (trên/dưới 15px, trái/phải 0) */
+    padding: 15px 0; 
+    text-align: center;
+    background-color: gainsboro;
+    border-top: 1px solid #90caf9;
+    font-size: 14px;
+    color: #333;
+    
+    /* Khoảng cách mép trên: 
+       'auto' để đẩy xuống đáy, 
+       nhưng thêm 'margin-top: 40px' (hoặc con số bạn muốn) để tạo khoảng cách với nội dung trên */
+    margin-top: 8px; 
+}
+
+/* Đảm bảo thẻ p bên trong không có margin mặc định gây thừa chiều cao */
+.footer-simple p {
+    margin: 0;
+}
+
+.dashboard-header {
+            margin-bottom: 2rem;
+            text-align: left;
+            width: 100%;
+        }
+        .dashboard-header h1 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #0f172a;
+            margin-bottom: 0.5rem;
+        }
+        .dashboard-header p {
+            color: black;
+            font-size: 1rem;
+        }

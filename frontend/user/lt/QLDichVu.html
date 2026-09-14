@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quản Lý Dịch Vụ</title>
+    <link rel="stylesheet" href="QLDichVu.css">
+</head>
+
+<body>
+    <header class="full-width-header">
+        <div class="welcome-banner">
+            Xin chào, Lễ tân <a href="../LTGD.html"><span id="usernameDisplay">...</span></a>! <span>⬅ Nhấn để quay lại</span>
+        </div>
+    </header>
+
+    <main class="container-management">
+        <div class="table-section">
+            <table id="customerTable">
+                <thead>
+                    <tr>
+                        <th style="display: flex; flex-direction: column; align-items: center; justify-content: center;">
+							Mã dịch vụ
+						</th>
+                        <th>Tên dịch vụ</th>
+                        <th>Mô tả dịch vụ</th>
+                        <th>Giá dịch vụ</th>
+						<th>Chuyên khoa</th>
+                    </tr>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="action-section">
+            <button class="action-btn add" onclick="addDV()">Thêm dịch vụ</button>
+            <button class="action-btn edit" onclick="editDV()">Sửa thông tin</button>
+            <button class="action-btn delete" onclick="deleteDV()">Xóa dịch vụ</button>
+            <button class="action-btn find" onclick="findDV()">Tìm kiếm dịch vụ</button>
+        </div>
+    </main>
+	
+	<div id="serviceModal" class="modal">
+		<div class="modal-content">
+			<h3 id="modalTitle">Thông tin dịch vụ</h3>
+			<form id="serviceForm" onsubmit="saveService(event)">
+				<input type="hidden" id="formMaDV">
+				<label>Tên dịch vụ:</label>
+				<input type="text" id="tenDV" required>
+				<label>Mô tả:</label>
+				<input type="text" id="moTaDV">
+				<label>Giá dịch vụ:</label>
+				<input type="number" id="giaDV" required>
+				<label>Chuyên khoa:</label>
+				<select id="tenCK">
+					<option value="Ngoại Chấn Thương Chỉnh Hình">Ngoại Chấn Thương Chỉnh Hình</option>
+					<option value="Ngoại Nhi">Ngoại Nhi</option>
+					<option value="Ngoại Tổng Quát">Ngoại Tổng Quát</option>
+					<option value="Ngoại Tiêu Hóa">Ngoại Tiêu Hóa</option>
+					<option value="Ngoại Thần Kinh">Ngoại Thần Kinh</option>
+					<option value="Ngoại Lồng Ngực - Tim Mạch">Ngoại Lồng Ngực - Tim Mạch</option>
+					<option value="Ngoại Tiết Niệu">Ngoại Tiết Niệu</option>
+					<option value="Ngoại Ung Bướu">Ngoại Ung Bướu</option>
+				</select>
+				<div style="margin-top: 20px; display: flex; gap: 10px;">
+					<button type="submit" class="action-btn add" style="flex:1">Lưu</button>
+					<button type="button" class="action-btn find" style="flex:1" onclick="closeModal()">Hủy</button>
+				</div>
+			</form>
+		</div>
+	</div>
+	
+	<div id="searchModal" class="modal">
+		<div class="modal-content">
+			<h3>Tìm kiếm dịch vụ</h3>
+			<label>Mã dịch vụ:</label>
+			<input type="text" id="searchMaDV" placeholder="Nhập mã dịch vụ...">
+			
+			<label>Tên dịch vụ:</label>
+			<input type="text" id="searchTenDV" placeholder="Nhập tên dịch vụ...">
+			
+			<label>Chuyên khoa:</label>
+			<select id="searchChuyenKhoa">
+				<option value="">-- Tất cả chuyên khoa --</option>
+				<option value="Ngoại Chấn Thương Chỉnh Hình">Ngoại Chấn Thương Chỉnh Hình</option>
+				<option value="Ngoại Nhi">Ngoại Nhi</option>
+				<option value="Ngoại Tổng Quát">Ngoại Tổng Quát</option>
+				<option value="Ngoại Tiêu Hóa">Ngoại Tiêu Hóa</option>
+				<option value="Ngoại Thần Kinh">Ngoại Thần Kinh</option>
+				<option value="Ngoại Lồng Ngực - Tim Mạch">Ngoại Lồng Ngực - Tim Mạch</option>
+				<option value="Ngoại Tiết Niệu">Ngoại Tiết Niệu</option>
+				<option value="Ngoại Ung Bướu">Ngoại Ung Bướu</option>
+			</select>
+
+			<div style="margin-top: 20px; display: flex; gap: 10px;">
+				<button class="action-btn add" style="flex:1" onclick="executeSearch()">Tìm kiếm</button>
+				<button class="action-btn find" style="flex:1" onclick="closeModal()">Hủy</button>
+			</div>
+		</div>
+	</div>
+	
+	<div id="deleteModal" class="modal">
+		<div class="modal-content">
+			<h3 style="color: #ce0e00;">Xác nhận xóa dịch vụ</h3>
+			<p style="margin: 15px 0;">Bạn có chắc chắn muốn xóa dịch vụ này không? Thao tác này không thể hoàn tác.</p>
+			<div style="background: #f9f9f9; padding: 10px; border-radius: 5px; margin-bottom: 15px;">
+				<p><strong>Mã DV:</strong> <span id="delMaDV"></span></p>
+				<p><strong>Tên DV:</strong> <span id="delTenDV"></span></p>
+			</div>
+			<div style="display: flex; gap: 10px;">
+				<button class="action-btn delete" style="flex:1" onclick="confirmDelete()">Xác nhận Xóa</button>
+				<button class="action-btn find" style="flex:1" onclick="closeModal()">Hủy bỏ</button>
+			</div>
+		</div>
+	</div>
+
+    <script src="QLDichVu.js"></script>
+</body>
+
+</html>

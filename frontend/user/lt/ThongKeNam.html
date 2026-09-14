@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thống Kê Theo Năm</title>
+    <link rel="stylesheet" href="ThongKeNgay.css">
+</head>
+
+<body>
+    <header class="full-width-header">
+        <div class="welcome-banner">
+            Xin chào, Lễ tân <a href="BaoCao.html"><span id="usernameDisplay">letan00</span></a>! <span>⬅ Nhấn để quay lại</span>
+        </div>
+    </header>
+
+    <main class="container-management">
+        <div class="table-section">
+            <table id="thongKeTable">
+				<thead>
+					<tr>
+						<th>Năm Thống Kê</th>
+						<th>Tổng Lịch Đặt</th>
+						<th>Số Lịch Hủy</th>
+						<th>Số Khách Đến</th>
+					</tr>
+				</thead>
+				<tbody id="thongKeBody"></tbody>
+        </table>
+        </div>
+
+        <div class="action-section">
+			<input type="number" id="filterYear" class="action-btn" placeholder="Nhập năm (VD: 2026)" 
+               min="2000" max="2100" style="background: white; color: black; width: 180px;">
+			<button class="action-btn add" onclick="createReport()">Tạo báo cáo</button>
+			<button class="action-btn find" onclick="findNam()">Lọc theo năm</button>
+		</div>
+    </main>
+
+    <script src="ThongKeNam.js"></script>
+</body>
+
+</html>

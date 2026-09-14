@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Báo Cáo Thống Kê</title>
+    <link rel="stylesheet" href="BaoCao.css">
+	<link rel="stylesheet" href="Shared.css">
+</head>
+
+<body>
+    <header class="full-width-header">
+        <div class="welcome-banner">
+            Xin chào, Lễ tân <a href="../LTGD.html"><span id="usernameDisplay">letan00</span></a>! <span>⬅ Nhấn để quay lại</span>
+        </div>
+    </header>
+
+    <main class="container" style="flex-direction: column; align-items: flex-start;">
+		<div class="dashboard-header">
+            <h1>Thống kê dữ liệu</h1>
+            <p>Theo dõi số liệu và hiệu suất hoạt động của phòng khám theo thời gian</p>
+        </div>
+
+        <div class="menu-grid">
+            <button class="menu-item" onclick="window.location.href='ThongKeNgay.html'">
+                <div class="btn-content">
+                    <span class="material-symbols-outlined">calendar_view_day</span>
+                    <span class="btn-title">Thống kê theo ngày</span>
+                    <span class="btn-desc">Theo dõi số liệu của từng ngày</span>
+                </div>
+            </button>
+            <button class="menu-item" onclick="window.location.href='ThongKeThang.html'">
+                <div class="btn-content">
+                    <span class="material-symbols-outlined">calendar_view_month</span>
+                    <span class="btn-title">Thống kê theo tháng</span>
+                    <span class="btn-desc">Báo cáo tổng kết chi tiết hàng tháng</span>
+                </div>
+            </button>
+            <button class="menu-item" onclick="window.location.href='ThongKeNam.html'">
+                <div class="btn-content">
+                    <span class="material-symbols-outlined">calendar_view_week</span>
+                    <span class="btn-title">Thống kê theo năm</span>
+                    <span class="btn-desc">Phân tích xu hướng phát triển dài hạn</span>
+                </div>
+            </button>
+        </div>	
+    </main>
+
+    <script src="BaoCao.js"></script>
+</body>
+
+</html>

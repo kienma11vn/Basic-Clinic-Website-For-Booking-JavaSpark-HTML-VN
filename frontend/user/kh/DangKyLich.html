@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Đăng Ký Lịch Khám</title>
+    <link rel="stylesheet" href="DangKyLich.css">
+</head>
+
+<body>
+    <header class="full-width-header">
+        <div class="welcome-banner">
+            Xin chào, Người dùng <a href="DatLichKham.html"><span id="usernameDisplay">...</span></a>! <span>⬅ Nhấn để quay lại</span>
+        </div>
+    </header>
+
+    <div class="form-container">
+        <form id="formDangKy">
+            <label>Ngày khám:</label>
+			<input type="date" id="ngayKham" required>
+
+			<label>Giờ khám:</label>
+			<select id="gioKham" required>
+				<option value="">-- Chọn khung giờ --</option>
+				<option value="08:00:00">08:00</option>
+				<option value="10:00:00">10:00</option>
+				<option value="14:00:00">14:00</option>
+				<option value="16:00:00">16:00</option>
+			</select>
+
+            <label>Chuyên khoa:</label>
+            <select id="chuyenKhoa" required>
+                <option value="">-- Chọn chuyên khoa --</option>
+            </select>
+
+            <label>Bác sĩ:</label>
+            <select id="bacSi" required disabled>
+                <option value="">-- Vui lòng chọn chuyên khoa trước --</option>
+            </select>
+
+            <label>Dịch vụ:</label>
+            <select id="dichVu" required>-- Vui lòng chọn chuyên khoa trước --</select>
+			
+			<label>Triệu chứng (tối đa 200 ký tự):</label>
+			<textarea id="trieuChung" rows="3" maxlength="200" style="width:100%; border-radius:5px; border:1px solid #ccc; padding:10px; margin-top:5px;"></textarea>
+
+            <button type="submit">Xác nhận đăng ký</button>
+        </form>
+    </div>
+    <script src="DangKyLich.js"></script>
+</body>
+
+</html>

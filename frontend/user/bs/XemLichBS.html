@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Xem Lịch Khám Bệnh</title>
+    <link rel="stylesheet" href="XemLichBS.css">
+</head>
+
+<body>
+    <header class="full-width-header">
+        <div class="welcome-banner">
+            Xin chào, Bác sĩ <a href="../BSGD.html"><span id="usernameDisplay">bacsi00</span></a>! <span>⬅ Nhấn để quay lại</span>
+        </div>
+    </header>
+
+    <main class="container-management">
+        <div class="table-section">
+            <table id="customerTable">
+                <thead>
+                    <tr>
+                        <th>Mã đặt lịch</th>
+                        <th>Ngày khám</th>
+						<th>Bệnh nhân</th>
+                        <th>Dịch vụ</th>
+                        <th>Tình trạng</th>
+                        <th>Khách đến khám</th>
+                        <th>Đánh giá</th>
+						<th>Triệu chứng</th>
+                    </tr>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="action-section">
+            <button class="action-btn find" onclick="findCustomer()">Tìm kiếm lịch khám</button>
+        </div>
+
+    </main>
+	
+	<div id="searchModal" class="modal">
+		<div class="modal-content">
+			<h3>Tìm kiếm lịch khám</h3>
+			<div id="searchForm">
+				<label>Mã đặt lịch:</label>
+				<input type="text" id="searchMaDL" placeholder="Nhập mã đặt lịch...">
+				
+				<label>Bệnh nhân:</label>
+				<input type="text" id="searchBN" placeholder="Nhập họ tên bệnh nhân...">
+
+				<label>Ngày khám:</label>
+				<input type="date" id="searchNgay">
+
+				<label>Dịch vụ:</label>
+				<input type="text" id="searchDV" placeholder="Nhập tên dịch vụ...">
+
+				<label>Trạng thái đến khám:</label>
+				<select id="searchKhachDen">
+					<option value="">Tất cả trạng thái</option>
+					<option value="Chưa xác nhận">Chưa xác nhận</option>
+					<option value="Đã đến khám" style="color: #27ae60;">Đã đến khám</option>
+					<option value="Không đến khám" style="color: #e74c3c;">Không đến khám</option>
+				</select>
+
+				<div class="modal-actions">
+					<button class="action-btn find" onclick="executeSearch()">Tìm kiếm</button>
+					<button class="action-btn delete" onclick="closeSearchModal()">Đóng</button>
+				</div>
+			</div>
+		</div>
+	</div>
+
+    <script src="XemLichBS.js"></script>
+</body>
+
+</html>

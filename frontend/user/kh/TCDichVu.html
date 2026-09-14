@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tra Cứu Dịch Vụ</title>
+    <link rel="stylesheet" href="TCDichVu.css">
+</head>
+
+<body>
+    <header class="full-width-header">
+        <div class="welcome-banner">
+            Xin chào, Người dùng <a href="TraCuuTT.html"><span id="usernameDisplay">khachhang00</span></a>! <span>⬅ Nhấn để quay lại</span>
+        </div>
+    </header>
+
+    <main class="container-management">
+        <div class="table-section">
+            <table id="customerTable">
+                <thead>
+                    <tr>
+                        <th>Mã dịch vụ</th>
+                        <th>Tên dịch vụ</th>
+                        <th>Mô tả dịch vụ</th>
+                        <th>Giá dịch vụ</th>
+						<th>Chuyên khoa</th>
+                    </tr>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="action-section">
+            <button class="action-btn find" onclick="openSearchModal()">Tìm kiếm dịch vụ</button>
+        </div>
+    </main>
+	
+	<div id="searchModal" class="modal">
+		<div class="modal-content">
+			<h3 style="margin-bottom: 15px; text-align: center;">Tìm kiếm dịch vụ</h3>
+			
+			<label>Tên dịch vụ:</label>
+			<input type="text" id="findTenDV" placeholder="Nhập tên dịch vụ...">
+
+			<label>Giá tối đa (VNĐ):</label>
+			<input type="number" id="findGiaDV" placeholder="Ví dụ: 500000">
+
+			<label>Chuyên khoa:</label>
+			<select id="findCKDV" style="width: 100%; padding: 10px; border-radius: 5px; border: 1px solid #ccc; margin-top: 5px;">
+				<option value="">-- Tất cả chuyên khoa --</option>
+				</select>
+
+			<div class="modal-actions" style="margin-top: 20px; display: flex; gap: 10px;">
+				<button class="action-btn find" onclick="executeSearchDV()" style="flex: 1;">Tìm ngay</button>
+				<button class="action-btn" onclick="closeSearchModal()" style="flex: 1; background: #666; color: white;">Hủy</button>
+			</div>
+		</div>
+	</div>
+
+    <script src="TCDichVu.js"></script>
+</body>
+
+</html>

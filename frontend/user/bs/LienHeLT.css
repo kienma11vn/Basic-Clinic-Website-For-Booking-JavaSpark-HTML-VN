@@ -1,0 +1,202 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #e7ba65;
+    font-family: 'Segoe UI', sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+}
+
+/* Header chiếm toàn bộ chiều rộng trên cùng */
+.full-width-header {
+    width: 100%;
+    background: linear-gradient(to bottom, #ffffff 0%, #f7db61 100%);
+    border-bottom: 2px solid #ffc13c;
+    padding: 20px 50px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.welcome-banner {
+    font-size: 28px;
+    font-weight: bold;
+    color: #333;
+    max-width: 1200px;
+    margin: 0 auto;
+    /* Căn giữa nội dung bên trong header rộng */
+}
+
+#usernameDisplay {
+    color: #0000ff;
+    text-decoration: underline;
+    font-style: italic;
+}
+
+.form-container {
+    width: 400px;
+    margin: 50px auto;
+    background: white;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+label {
+    display: block;
+    margin-top: 15px;
+    font-weight: bold;
+}
+
+input,
+textarea,
+select {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+button {
+    width: 100%;
+    margin-top: 25px;
+    padding: 12px;
+    background: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 1em;
+}
+
+button:hover {
+    background: #0056b3;
+}
+
+/* Container chính chứa cả 2 cột */
+.main-content {
+    display: flex;
+    /* align-items: stretch là mặc định, giúp các cột cao bằng nhau */
+    align-items: stretch; 
+    gap: 30px;
+    max-width: 1200px;
+    width: 100%;
+    margin: 20px auto;
+}
+
+.list-container {
+    flex: 2; /* Chiếm diện tích lớn hơn */
+    background: white;
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.list-container h3 {
+    margin-bottom: 20px;
+    color: #007bff;
+    border-bottom: 2px solid #eee;
+    padding-bottom: 10px;
+}
+
+/* Các mục tin nhắn trong danh sách */
+.contact-item {
+    background: #f9f9f9;
+    padding: 15px;
+    margin-bottom: 15px;
+    border-left: 5px solid #ff9800;
+    border-radius: 8px;
+	transition: 0.2s;
+	background-color: #fffaf0;
+	box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+	cursor: pointer;
+}
+
+.contact-item strong {
+    display: block;
+    font-size: 1.1em;
+    margin-bottom: 5px;
+}
+
+.contact-item:hover {
+    transform: translateX(5px);
+}
+
+/* Cột bên phải (Chứa Form và Nút) */
+.form-container {
+    flex: 1; /* Tỉ lệ độ rộng */
+    display: flex;
+    flex-direction: column;
+
+    /* THIẾT LẬP STICKY CHO CẢ CONTAINER */
+    position: -webkit-sticky;
+    position: sticky;
+    top: 10px; /* Khoảng cách với mép trên trình duyệt khi cuộn */
+    
+    /* Đảm bảo container không cao hơn nội dung bên trong nó */
+    height: fit-content; 
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    justify-content: center;
+    align-items: center;
+    z-index: 2000;
+}
+
+.modal-content {
+    background: white;
+    padding: 30px;
+    border-radius: 15px;
+    width: 400px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+	max-height: 85vh;    /* Cao tối đa 85% màn hình */
+    overflow-y: auto;    /* Hiện thanh cuộn nếu nội dung vượt quá max-height */
+}
+
+.action-btn {
+    padding: 12px;
+    font-size: 16px;
+    font-weight: bold;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.find { background-color: #423c41; color: white; }
+.delete { background-color: #ce0e00; color: white; }
+
+.action-btn:hover {
+    opacity: 0.8;
+    transform: scale(1.02);
+}
+
+.modal-actions {
+    margin-top: 20px;
+    display: flex;
+    gap: 10px;
+}
+
+#searchModal .modal-content div label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+    font-size: 0.9em;
+}
+
+#searchModal input[type="checkbox"] {
+    width: auto; /* Ghi đè lại width 100% của input chung */
+    margin-top: 0;
+}

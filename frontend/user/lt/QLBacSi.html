@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quản Lý Bác Sĩ</title>
+    <link rel="stylesheet" href="QLBacSi.css">
+</head>
+
+<body>
+    <header class="full-width-header">
+        <div class="welcome-banner">
+            Xin chào, Lễ tân <a href="QLBacSiVaLich.html"><span id="usernameDisplay">...</span></a>! <span>⬅ Nhấn để quay lại</span>
+        </div>
+    </header>
+
+    <main class="container-management">
+        <div class="table-section">
+		<p style="margin-bottom: 10px; color: #666;">Chọn <b>Họ tên bác sĩ</b> để xem thông tin bảo mật & thông tin cá nhân</p>
+            <table id="DoctorTable">
+                <thead>
+                    <tr>
+                        <th>Mã bác sĩ</th>
+                        <th>Họ tên bác sĩ</th>
+                        <th>Tên chuyên khoa</th>
+                        <th>Chức danh</th>
+                        <th>Thâm niên</th>
+                    </tr>
+                </thead>
+                <tbody id="doctorTableBody">
+                    </tbody>
+            </table>
+        </div>
+
+        <div class="action-section">
+            <button class="action-btn add" onclick="addBS()">Thêm bác sĩ</button>
+            <button class="action-btn edit" onclick="editBS()">Sửa thông tin</button>
+            <button class="action-btn delete" onclick="deleteBS()">Xóa bác sĩ</button>
+            <button class="action-btn find" onclick="openSearchModal()">Tìm kiếm bác sĩ</button>
+        </div>
+    </main>
+	
+	<div id="doctorModal" class="modal">
+        <div class="modal-content">          
+            <div id="modalDetail"></div>
+			
+			<div class="modal-footer" style="margin-top: 20px; border-top: 1px solid #eee; pt: 15px; display: flex; justify-content: flex-end;">
+				<button class="action-btn" onclick="closeModal('doctorModal')" style="background-color: #666; color: white; width: 100%;">Hủy</button>
+			</div>
+        </div>
+    </div>
+	
+	<div id="addDoctorModal" class="modal">
+		<div class="modal-content" style="width: 550px; max-height: 90vh; display: flex; flex-direction: column;">
+			<h3>Thêm Bác Sĩ Mới</h3>
+			
+			<div class="modal-body-scroll" style="overflow-y: auto; padding-right: 10px; flex-grow: 1;">
+				<div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
+					<div>
+						<label>Tên đăng nhập:</label>
+						<input type="text" id="addTenTK" placeholder="Ví dụ: bs_an01">
+						
+						<label>Họ tên:</label>
+						<input type="text" id="addHoTen">
+						
+						<label>Email:</label>
+						<input type="email" id="addEmail">
+						
+						<label>Số CCCD:</label>
+						<input type="text" id="addCCCD">
+					</div>
+					<div>
+						<label>Chuyên khoa:</label>
+						<select id="addCK">
+							<option value="">-- Chọn chuyên khoa --</option>
+						</select>
+						
+						<label>Chức danh:</label>
+						<input type="text" id="addCD">
+						
+						<label>Thâm niên (năm):</label>
+						<input type="number" id="addTN">
+						
+						<label>Số điện thoại:</label>
+						<input type="text" id="addSDT">
+					</div>
+				</div>
+
+				<label>Ngày sinh:</label>
+				<input type="date" id="addNgaySinh">
+
+				<label>Giới tính:</label>
+				<select id="addGT">
+					<option value="Nam">Nam</option>
+					<option value="Nu">Nữ</option>
+				</select>
+
+				<label>Địa chỉ:</label>
+				<input type="text" id="addDiaChi">
+				
+				<p style="color: red; font-size: 12px; margin-top: 10px;">* Mật khẩu mặc định: Macdinh123456</p>
+			</div>
+
+			<div class="modal-actions" style="margin-top: 20px; display: flex; gap: 10px;">
+				<button class="action-btn add" onclick="executeAddDoctor()" style="flex: 1;">Lưu thông tin</button>
+				<button class="action-btn" onclick="closeModal('addDoctorModal')" style="flex: 1; background: #666; color: white;">Hủy</button>
+			</div>
+		</div>
+	</div>
+	
+	<div id="deleteConfirmModal" class="modal">
+		<div class="modal-content" style="width: 400px; text-align: center;">
+			<h3 style="color: #ce0e00;">Xác nhận xóa bác sĩ</h3>
+			<p style="margin: 15px 0;">Bạn có chắc chắn muốn xóa bác sĩ sau khỏi hệ thống?</p>
+			
+			<div style="background: #f9f9f9; padding: 10px; border-radius: 8px; margin-bottom: 20px; text-align: left;">
+				<p><strong>Mã bác sĩ:</strong> <span id="delMaBS"></span></p>
+				<p><strong>Họ tên:</strong> <span id="delHoTen"></span></p>
+			</div>
+
+			<div style="display: flex; gap: 10px;">
+				<button class="action-btn" onclick="executeDelete()" style="flex: 1; background: #ce0e00; color: white;">Xác nhận xóa</button>
+				<button class="action-btn" onclick="closeModal('deleteConfirmModal')" style="flex: 1; background: #666; color: white;">Hủy</button>
+			</div>
+		</div>
+	</div>
+	
+	<div id="searchModal" class="modal">
+		<div class="modal-content">
+			<h3 style="margin-bottom: 15px; text-align: center;">Tìm kiếm bác sĩ</h3>
+			
+			<label>Mã bác sĩ:</label>
+			<input type="text" id="findMaBS" placeholder="Nhập mã...">
+
+			<label>Họ tên bác sĩ:</label>
+			<input type="text" id="findName" placeholder="Nhập tên...">
+
+			<label>Chuyên khoa:</label>
+			<input type="text" id="findCK" placeholder="Nhập chuyên khoa...">
+
+			<label>Chức danh:</label>
+			<input type="text" id="findCD" placeholder="Nhập chức danh...">
+
+			<label>Thâm niên:</label>
+			<input type="number" id="findTN" placeholder="Ví dụ: 5">
+
+			<label for="findGT">Giới tính:</label>
+			<select id="findGT">
+				<option value="">-- Tất cả --</option>
+				<option value="Nam">Nam</option>
+				<option value="Nu">Nữ</option>
+			</select>
+
+			<div class="modal-actions" style="margin-top: 20px; display: flex; gap: 10px;">
+				<button class="action-btn find" onclick="executeSearch()" style="flex: 1;">Tìm kiếm</button>
+				<button class="action-btn" onclick="closeModal('searchModal')" style="flex: 1; background: #423c41; color: white;">Hủy</button>
+			</div>
+		</div>
+	</div>
+
+    <script src="QLBacSi.js"></script>
+</body>
+
+</html>

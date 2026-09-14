@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Giao diện Lễ tân</title>
+    <link rel="stylesheet" href="LTGD.css">
+	<link rel="stylesheet" href="Shared.css">
+</head>
+
+<body>
+    <header class="full-width-header">
+        <div class="welcome-banner">
+            Xin chào, Lễ tân <a href="LTGD.html"><span id="usernameDisplay">...</span></a>!
+        </div>
+    </header>
+
+    <main class="container" style="flex-direction: column; align-items: flex-start;">
+		<div class="dashboard-header">
+            <h1>Bảng điều khiển lễ tân</h1>
+            <p><p>Chào mừng trở lại, vui lòng chọn nghiệp vụ quản lý bạn cần sử dụng bên dưới</p>
+        </div>
+	
+        <div class="menu-grid">
+            <button class="menu-item" onclick="window.location.href='lt/QLDatLich.html'">
+                <div class="btn-content">
+                    <span class="material-symbols-outlined">event_available</span>
+                    <span class="btn-title">Quản lý đặt lịch</span>
+                    <span class="btn-desc">Xử lý và xác nhận lịch hẹn từ khách hàng</span>
+                </div>
+            </button>
+
+            <button class="menu-item" onclick="window.location.href='lt/QLKhachHang.html'">
+                <div class="btn-content">
+                    <span class="material-symbols-outlined">group</span>
+                    <span class="btn-title">Quản lý khách hàng</span>
+                    <span class="btn-desc">Quản lý thông tin và hồ sơ bệnh nhân</span>
+                </div>
+            </button>
+
+            <button class="menu-item" onclick="window.location.href='lt/QLBacSiVaLich.html'">
+                <div class="btn-content">
+                    <span class="material-symbols-outlined">medical_services</span>
+                    <span class="btn-title">Quản lý bác sĩ & lịch trình</span>
+                    <span class="btn-desc">Sắp xếp ca làm việc cho đội ngũ y bác sĩ</span>
+                </div>
+            </button>
+
+            <button class="menu-item" onclick="window.location.href='lt/QLDichVu.html'">
+                <div class="btn-content">
+                    <span class="material-symbols-outlined">list_alt</span>
+                    <span class="btn-title">Quản lý dịch vụ</span>
+                    <span class="btn-desc">Cập nhật danh mục và giá dịch vụ khám</span>
+                </div>
+            </button>
+
+            <button class="menu-item" onclick="window.location.href='lt/BaoCao.html'">
+                <div class="btn-content">
+                    <span class="material-symbols-outlined">analytics</span>
+                    <span class="btn-title">Báo cáo thống kê</span>
+                    <span class="btn-desc">Theo dõi các lượt khám bệnh</span>
+                </div>
+            </button>
+
+            <div class="sub-group">
+                <button class="menu-item small" onclick="window.location.href='DoiMKGD.html'">
+                    <span class="material-symbols-outlined" style="font-size: 20px;">lock_reset</span>
+                    Đổi mật khẩu
+                </button>
+                <button class="menu-item small btn-logout" onclick="logout()">
+                    <span class="material-symbols-outlined" style="font-size: 20px;">logout</span>
+                    Đăng xuất
+                </button>
+            </div>
+        </div>
+    </main>
+	
+	<footer class="footer-simple">
+        <p>© 2026 PHÒNG KHÁM AN TÂM. Tất cả quyền được bảo lưu.</p>
+    </footer>
+
+    <script src="LTGD.js"></script>
+</body>
+
+</html>

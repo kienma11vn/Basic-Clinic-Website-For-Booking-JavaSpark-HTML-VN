@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Sửa Lịch Khám</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="SuaLichKH.css">
+</head>
+
+<body>
+    <header class="full-width-header">
+        <div class="welcome-banner">
+            Xin chào, Người dùng <a href="DatLichKham.html"><span id="usernameDisplay">khachhang00</span></a>! <span>⬅ Nhấn
+                để quay
+                lại</span>
+        </div>
+    </header>
+
+    <main class="container-management">
+        <div class="table-section">
+            <p style="margin-bottom: 10px; color: #666;">Chọn <b>Mã đặt lịch</b> để chỉnh sửa</p>
+            <table id="lichKHTable">
+                <thead>
+                    <tr>
+                        <th>Mã đặt lịch</th>
+                        <th>Ngày khám</th>
+                        <th>Bác sĩ</th>
+                        <th>Dịch vụ</th>
+                        <th>Tình trạng</th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+        </div>
+		
+		<div class="action-section">
+            <button class="action-btn find" onclick="findLK()">Tìm kiếm lịch khám</button>
+        </div>
+    </main>
+
+    <div id="editModal" class="modal">
+		<div class="modal-content">
+			<h3 style="border-bottom: 2px solid #79bbfd; padding-bottom: 10px; margin-bottom: 10px;">Cập nhật lịch khám</h3>
+			<form id="editForm">
+				<input type="hidden" id="editMaDL">
+				
+				<label>Ngày khám:</label>
+				<input type="date" id="editNgayKham" required>
+
+				<label>Giờ khám:</label>
+				<select id="editGioKham" required>
+					<option value="08:00:00">08:00</option>
+					<option value="10:00:00">10:00</option>
+					<option value="14:00:00">14:00</option>
+					<option value="16:00:00">16:00</option>
+				</select>
+
+				<label>Chuyên khoa:</label>
+				<select id="editChuyenKhoa" required>
+					<option value="">-- Chọn chuyên khoa --</option>
+				</select>
+
+				<label>Bác sĩ:</label>
+				<select id="editBacSi" required disabled></select>
+
+				<label>Dịch vụ:</label>
+				<select id="editDichVu" required disabled></select>
+
+				<label>Triệu chứng:</label>
+				<textarea id="editTrieuChung" rows="3" maxlength="200" style="width:100%; border-radius:5px; border:1px solid #ccc; padding:10px; margin-top:5px;"></textarea>
+
+				<button class="action-btn add" type="submit">Lưu thay đổi</button>
+				<button class="action-btn delete" type="button" onclick="closeModal()">Hủy</button>
+			</form>
+		</div>
+	</div>
+	
+	<div id="searchModal" class="modal">
+		<div class="modal-content">
+			<h3>Tìm kiếm lịch khám</h3>
+			<div id="searchForm">
+				<label>Mã đặt lịch:</label>
+				<input type="text" id="searchMaDL" placeholder="Nhập mã đặt lịch...">
+
+				<label>Ngày khám:</label>
+				<input type="date" id="searchNgay">
+
+				<label>Tên Bác sĩ:</label>
+				<input type="text" id="searchBacSi" placeholder="Nhập tên bác sĩ...">
+
+				<label>Dịch vụ:</label>
+				<input type="text" id="searchDV" placeholder="Nhập tên dịch vụ...">
+
+				<div class="modal-actions">
+					<button class="action-btn find" onclick="executeSearch()">Tìm ngay</button>
+					<button class="action-btn delete" onclick="closeSearchModal()">Đóng</button>
+				</div>
+			</div>
+		</div>
+	</div>
+
+    <script src="SuaLichKH.js"></script>
+</body>
+
+</html>

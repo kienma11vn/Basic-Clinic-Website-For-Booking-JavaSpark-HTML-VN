@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quản Lý Khách Hàng</title>
+    <link rel="stylesheet" href="QLKhachHang.css">
+</head>
+
+<body>
+    <header class="full-width-header">
+        <div class="welcome-banner">
+            Xin chào, Lễ tân <a href="../LTGD.html"><span id="usernameDisplay">...</span></a>! <span>⬅ Nhấn để quay lại</span>
+        </div>
+    </header>
+
+    <main class="container-management">
+        <div class="table-section">
+			<p style="margin-bottom: 10px; color: #666;">Chọn <b>Mã khách hàng</b> để xem thông tin bảo mật</p>
+            <table id="customerTable">
+                <thead>
+                    <tr>
+                        <th>Mã tài khoản</th>
+                        <th>Mã khách hàng</th>
+                        <th>Email đăng ký</th>
+                        <th>Họ tên</th>
+                        <th>Ngày sinh</th>
+                        <th>Số điện thoại</th>
+                        <th>Địa chỉ</th>
+                        <th>Giới tính</th>
+                    </tr>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="action-section">
+            <button class="action-btn add" onclick="addCustomer()">Thêm khách hàng</button>
+            <button class="action-btn edit" onclick="editCustomer()">Sửa thông tin</button>
+            <button class="action-btn delete" onclick="deleteCustomer()">Xóa khách hàng</button>
+            <button class="action-btn find" onclick="findCustomer()">Tìm kiếm khách hàng</button>
+        </div>
+    </main>
+	
+	<div id="addCustomerModal" class="modal">
+		<div class="modal-content">
+			<h3>Thêm khách hàng mới</h3>
+			<form id="addCustomerForm">
+				<label>Tên đăng nhập:</label>
+				<input type="text" id="add_tenTK" placeholder="Tên đăng nhập 8-20 ký tự">
+				
+				<label>Họ tên:</label>
+				<input type="text" id="add_hoTen" required>
+				
+				<label>Email đăng ký:</label>
+				<input type="email" id="add_emailDK" required>
+
+				<label>Số CCCD:</label>
+				<input type="text" id="add_soCCCD" required>
+
+				<label>Số điện thoại:</label>
+				<input type="text" id="add_SDT" maxlength="10" required>
+
+				<label>Địa chỉ:</label>
+				<input type="text" id="add_diaChi">
+
+				<label>Ngày sinh:</label>
+				<input type="date" id="add_ngaySinh">
+
+				<label>Giới tính:</label>
+				<select id="add_gioiTinh">
+					<option value="Nam">Nam</option>
+					<option value="Nu">Nữ</option>
+				</select>
+
+				<div class="modal-buttons" style="margin-top: 20px; display: flex; gap: 10px;">
+					<button type="button" class="action-btn add" onclick="executeAddCustomer()">Lưu mới</button>
+					<button type="button" class="action-btn find" onclick="closeModal()">Hủy</button>
+				</div>
+			</form>
+		</div>
+	</div>
+
+	<div id="editCustomerModal" class="modal">
+		<div class="modal-content">
+			<h3>Cập nhật khách hàng</h3>
+			<form id="editCustomerForm">
+				<input type="hidden" id="edit_maTK"> <label>Họ tên:</label>
+				<input type="text" id="edit_hoTen" required>
+				
+				<label>Email đăng ký:</label>
+				<input type="email" id="edit_emailDK" required>
+
+				<label>Số CCCD:</label>
+				<input type="text" id="edit_soCCCD" required>
+
+				<label>Số điện thoại:</label>
+				<input type="text" id="edit_SDT" maxlength="10" required>
+
+				<label>Địa chỉ:</label>
+				<input type="text" id="edit_diaChi">
+
+				<label>Ngày sinh:</label>
+				<input type="date" id="edit_ngaySinh">
+
+				<label>Giới tính:</label>
+				<select id="edit_gioiTinh">
+					<option value="Nam">Nam</option>
+					<option value="Nu">Nữ</option>
+				</select>
+
+				<div class="modal-buttons" style="margin-top: 20px; display: flex; gap: 10px;">
+					<button type="button" class="action-btn edit" onclick="executeUpdateCustomer()">Cập nhật</button>
+					<button type="button" class="action-btn find" onclick="closeModal()">Hủy</button>
+				</div>
+			</form>
+		</div>
+	</div>
+
+	<div id="deleteConfirmModal" class="modal" style="display: none;">
+		<div class="modal-content">
+			<h3>Xác nhận xóa khách hàng?</h3>
+			<p style="margin-bottom: 10px; text-align: center;">Hành động này không thể hoàn tác.</p>
+			<div class="modal-buttons">
+				<button class="action-btn delete" id="confirmDeleteBtn">Xóa ngay</button>
+				<button class="action-btn find" type="button" onclick="closeModal()">Quay lại</button>
+			</div>
+		</div>
+	</div>
+	
+	<div id="viewAccountModal" class="modal">
+		<div class="modal-content">
+			<h3>Thông tin bảo mật khách hàng</h3>
+			<p><strong>Mã khách hàng:</strong> <span id="viewMaKH"></span></p>
+			<p><strong>Tên đăng nhập:</strong> <span id="viewTenTK" style="color: blue;"></span></p>
+			<p><strong>Mật khẩu:</strong> <span id="viewMatKhau" style="color: red;"></span></p>
+			<hr>
+			<button class="action-btn find" onclick="closeAllModals()" style="width: 100%; margin-top: 10px;">Đóng</button>
+		</div>
+	</div>
+
+	<div id="searchModal" class="modal">
+		<div class="modal-content">
+			<h3>Tìm kiếm khách hàng</h3>
+			<label>Họ tên:</label>
+			<input type="text" id="searchHoTen">
+			<label>Số điện thoại:</label>
+			<input type="text" id="searchSDT">
+			<label>Email:</label>
+			<input type="text" id="searchEmail">
+			<label>Địa chỉ:</label>
+			<input type="text" id="searchDiaChi">
+			<label>Giới tính:</label>
+			<select id="searchGioiTinh">
+				<option value="">-- Tất cả --</option>
+				<option value="Nam">Nam</option>
+				<option value="Nu">Nữ</option>
+			</select>
+			<div style="display: flex; gap: 10px; margin-top: 20px;">
+				<button class="action-btn add" onclick="executeSearch()">Tìm</button>
+				<button class="action-btn find" onclick="closeAllModals()">Hủy</button>
+			</div>
+		</div>
+	</div>
+
+    <script src="QLKhachHang.js"></script>
+</body>
+
+</html>

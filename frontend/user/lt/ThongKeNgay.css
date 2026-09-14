@@ -1,0 +1,196 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #149c3d; /* Màu xanh nền chủ đạo */
+    font-family: 'Segoe UI', sans-serif;
+    min-height: 100vh;
+}
+
+.full-width-header {
+    width: 100%;
+    background: linear-gradient(to bottom, #ffffff 0%, #9effa6 100%);
+    border-bottom: 2px solid #90f999;
+    padding: 20px 50px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.welcome-banner {
+    font-size: 28px;
+    font-weight: bold;
+    color: #333;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+#usernameDisplay {
+    color: #0000ff;
+    text-decoration: underline;
+    font-style: italic;
+}
+
+.container-management {
+    display: flex;
+    max-width: 1300px;
+    margin: 40px auto;
+    gap: 20px;
+    padding: 0 20px;
+}
+
+/* Chia tỉ lệ 3/4 */
+.table-section {
+    flex: 3;
+    background: white;
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    overflow-x: auto;
+}
+
+/* Chia tỉ lệ 1/4 */
+.action-section {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th, td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+th {
+    background-color: #f2f2f2;
+    color: #333;
+}
+
+.action-btn {
+    padding: 15px;
+    font-size: 16px;
+    font-weight: bold;
+    border: 1px solid whitesmoke;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: 0.3s;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+.add { background-color: #be5c00; color: white; }
+.edit { background-color: #7c01ce; color: white; }
+.delete { background-color: #ce0e00; color: white; }
+.find { background-color: #423c41; color: white; }
+
+.action-btn:hover {
+    opacity: 0.8;
+    transform: scale(1.02);
+}
+
+/* Container cho mã khách hàng để chứa icon phía trên */
+.id-container {
+    display: flex;
+    flex-direction: column; /* Xếp dọc */
+    align-items: center;    /* Căn giữa theo chiều ngang */
+    justify-content: center;
+    gap: 2px;
+}
+
+/* Style cho các icon */
+.action-icon {
+    font-size: 14px;
+    line-height: 1;
+}
+
+.delete-icon { color: red; }
+.edit-icon { color: #7c01ce; }
+
+/* Clickable ID giống HuyLichKH */
+.clickable-id {
+    color: #0000ff;
+    text-decoration: underline;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.clickable-id:hover {
+    color: #ce0e00;
+}
+
+/* Modal theo phong cách SuaLichKH/HuyLichKH */
+.modal {
+    display: none; /* Mặc định ẩn */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Nền tối phía sau */
+    z-index: 1000;
+    justify-content: center; /* Căn giữa modal theo chiều ngang */
+    align-items: center;     /* Căn giữa modal theo chiều dọc */
+}
+
+.modal-content {
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    width: 450px;
+    max-height: 85vh; /* Giới hạn chiều cao 85% màn hình */
+    overflow-y: auto; /* Hiện thanh cuộn khi nội dung quá dài */
+    position: relative;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+}
+
+.modal-content h3 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.modal-content label {
+    display: block;
+    margin-top: 10px;
+    font-weight: bold;
+}
+
+.modal-content input, .modal-content select {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.delete-icon {
+    color: red;
+    margin-right: 5px;
+    font-weight: bold;
+}
+
+#filterDate {
+    padding: 10px;
+    border: 2px solid #be5c00;
+    margin-bottom: 5px;
+}
+
+#filterMonth {
+    padding: 10px;
+    border: 2px solid #be5c00;
+    margin-bottom: 5px;
+}
+
+#filterYear {
+    padding: 10px;
+    border: 2px solid #be5c00;
+    margin-bottom: 5px;
+	width: 100%;
+}

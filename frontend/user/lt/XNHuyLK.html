@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Xác Nhận Hủy Lịch</title>
+    <link rel="stylesheet" href="XNHuyLK.css">
+</head>
+<body>
+    <header class="full-width-header">
+        <div class="welcome-banner">
+            Xin chào, Lễ tân <a href="QLDatLich.html"><span id="usernameDisplay">letan00</span></a>! <span>⬅ Nhấn để quay lại</span>
+        </div>
+    </header>
+
+    <main class="container-management">
+        <div class="table-section">
+            <p style="margin-bottom: 10px; color: #666;">Chọn <b>Mã đặt lịch</b> để xử lý yêu cầu hủy</p>
+            <table id="customerTable">
+                <thead>
+                    <tr>
+                        <th>Mã đặt lịch</th>
+                        <th>Ngày khám</th>
+                        <th>Bác sĩ</th>
+                        <th>Bệnh nhân</th>
+                        <th>Dịch vụ</th>
+                        <th>Tình trạng</th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+        </div>
+        <div class="action-section">
+            <button class="action-btn find" onclick="findCustomer()">Tìm kiếm lịch khám</button>
+        </div>
+    </main>
+	
+    <div id="actionModal" class="modal">
+        <div class="modal-content-large">
+            <h3>Xử lý yêu cầu hủy</h3>
+            <p id="selectedMaDLText"></p>
+            <div class="modal-actions">
+                <button class="action-btn find" onclick="checkValidHuy()">Kiểm tra hợp lệ</button>
+                <button class="action-btn add" onclick="processHuy('XNHuy')">Xác nhận hủy</button>
+                <button class="action-btn delete" style="background-color: orange;" onclick="processHuy('KHuy')">Không xác nhận</button>
+                <button class="action-btn delete" onclick="closeModal('actionModal')">Quay lại</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="searchModal" class="modal">
+        <div class="modal-content">
+            <h3>Tìm kiếm lịch hủy</h3>
+            <input type="text" id="sMaDL" placeholder="Mã đặt lịch">
+            <input type="date" id="sNgay">
+            <input type="text" id="sBacSi" placeholder="Tên Bác sĩ">
+            <input type="text" id="sBenhNhan" placeholder="Tên Bệnh nhân">
+            <input type="text" id="sDichVu" placeholder="Tên Dịch vụ">
+            <select id="sTinhTrang">
+                <option value="">Tất cả trạng thái</option>
+                <option value="Huy" style="color: orange;">Chưa xác nhận hủy</option>
+                <option value="XNHuy" style="color: #e74c3c;">Đã xác nhận hủy</option>
+                <option value="KHuy" style="color: purple;">Không xác nhận hủy</option>
+            </select>
+            <div class="modal-actions">
+                <button class="action-btn find" onclick="applySearch()">Lọc kết quả</button>
+                <button class="action-btn delete" onclick="closeModal('searchModal')">Đóng</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="XNHuyLK.js"></script>
+</body>
+</html>

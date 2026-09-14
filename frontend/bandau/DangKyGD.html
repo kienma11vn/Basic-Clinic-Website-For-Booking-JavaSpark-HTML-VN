@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+	<title>Phòng Khám AN TÂM</title>
+    <link rel="stylesheet" href="DangkyDangnhapKhoiphuc.css">
+</head>
+
+<body>
+    <div class="card-wrapper">
+        <div class="info-section">
+            <div class="logo-group">
+                <div class="logo-icon">😊</div>
+                <div>
+                    <div><a class="brand-name" href="../PK_TrangChu.html">Phòng khám An Tâm</a></div>
+
+                </div>
+            </div>
+            <h1>Phòng Khám Ngoại Khoa Hiện Đại</h1>
+            <p>Đăng nhập để đặt lịch khám, quản lý hồ sơ sức khỏe và nhận tư vấn từ đội ngũ bác sĩ chuyên nghiệp.</p>
+
+            <div class="benefit-item">✓ Đặt lịch dễ dàng</div>
+            <div class="benefit-item">✓ Theo dõi lịch sử</div>
+            <div class="benefit-item">✓ Tư vấn trực tuyến</div>
+
+            <div class="footer-quote">"Nụ cười tự tin - Sức khỏe trọn vẹn"</div>
+			
+			<p>© 2026 PHÒNG KHÁM AN TÂM. Tất cả quyền được bảo lưu.</p>
+        </div>
+
+        <div class="form-section">
+            <h2>Chào mừng bạn!</h2>
+
+            <form id="resgisterForm">
+                <div class="input-group">
+                    <label>Tên tài khoản:</label><br>
+                    <input type="text" name="tenTK" minlength="8" maxlength="20" placeholder="Nhập tên tài khoản" required>
+                </div>
+                <div class="input-group">
+                    <label>Email:</label><br>
+                    <input type="email" name="email" id="emailDK" placeholder="Nhập email" required>
+                </div>
+                <div class="input-group">
+                    <label>Mật khẩu:</label><br>
+                    <input type="password" id="Pass" name="matKhau" placeholder="Từ 6-15 ký tự" minlength="6" maxlength="15"
+                        required>
+                </div>
+
+                <div class="input-group">
+                    <label>Nhập lại mật khẩu:</label><br>
+                    <input type="password" id="confirmPass" placeholder="Xác nhận lại mật khẩu" name="matKhau" minlength="6" maxlength="15"
+                        required>
+                </div>
+
+                <button type="submit" class="btn-main">Đăng ký tài khoản →</button>
+            </form>
+        </div>
+
+        <script>
+            document.getElementById('resgisterForm').addEventListener('submit', function (event) {
+                event.preventDefault(); // Ngăn form load lại trang
+
+                const tenTK = document.querySelector('input[name="tenTK"]').value;
+                const email = document.getElementById('emailDK').value;
+                const Pass = document.getElementById('Pass').value;
+                const confirmPass = document.getElementById('confirmPass').value;
+
+                // 1. Kiểm tra mật khẩu khớp
+                if (Pass !== confirmPass) {
+                    alert("Mật khẩu nhập lại không khớp!");
+                    return;
+                }
+
+                // 2. Gửi dữ liệu sang Java qua Fetch API
+                fetch('http://localhost:9999/api/dang-ky', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        tenTK: tenTK,
+                        email: email,
+                        matKhau: Pass
+                    })
+                })
+                    .then(response => response.json())
+                    .then(data => {
+                        if (data.status === "success") {
+                            alert("Đăng ký thành công và đã lưu vào CSDL!");
+                            window.location.href = 'DangNhapGD.html';
+                        } else {
+                            alert("Lỗi đăng ký: " + data.message);
+                        }
+                    })
+                    .catch(err => alert("Không kết nối được với Server Java!"));
+            });
+        </script>
+    </div>
+</body>
+
+</html>

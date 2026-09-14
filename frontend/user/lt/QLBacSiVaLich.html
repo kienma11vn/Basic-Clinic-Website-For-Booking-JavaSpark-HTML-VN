@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quản Lý Bác Sĩ & Lịch Trình</title>
+    <link rel="stylesheet" href="QLBacSiVaLich.css">
+	<link rel="stylesheet" href="Shared.css">
+</head>
+
+<body>
+    <header class="full-width-header">
+        <div class="welcome-banner">
+            Xin chào, Lễ tân <a href="../LTGD.html"><span id="usernameDisplay">letan00</span></a>! <span>⬅ Nhấn để quay lại</span>
+        </div>
+    </header>
+
+    <main class="container" style="flex-direction: column; align-items: flex-start;">
+		<div class="dashboard-header">
+            <h1>Quản lý đội ngũ bác sĩ & lịch khám bệnh</h1>
+            <p>Điều chỉnh hồ sơ bác sĩ và phân bổ lịch khám bệnh</p>
+        </div>
+		
+        <div class="menu-grid">
+            <button class="menu-item" onclick="window.location.href='QLBacSi.html'">
+                <div class="btn-content">
+                    <span class="material-symbols-outlined">badge</span>
+                    <span class="btn-title">Quản lý bác sĩ</span>
+                    <span class="btn-desc">Thêm, sửa, xóa hồ sơ thông tin bác sĩ</span>
+                </div>
+            </button>
+            <button class="menu-item" onclick="window.location.href='QLLichBacSi.html'">
+                <div class="btn-content">
+                    <span class="material-symbols-outlined">calendar_today</span>
+                    <span class="btn-title">Quản lý lịch trình</span>
+                    <span class="btn-desc">Thiết lập khung giờ khám cho từng bác sĩ</span>
+                </div>
+            </button>
+    </main>
+
+    <script src="QLBacSiVaLich.js"></script>
+</body>
+
+</html>

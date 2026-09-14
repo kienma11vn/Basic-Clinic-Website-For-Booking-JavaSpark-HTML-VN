@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tra Cứu Thông Tin</title>
+    <link rel="stylesheet" href="TraCuuTT.css">
+	<link rel="stylesheet" href="Shared.css">
+</head>
+
+<body>
+    <header class="full-width-header">
+        <div class="welcome-banner">
+            Xin chào, Người dùng <a href="../KHGD.html"><span id="usernameDisplay">khachhang00</span></a>! <span>⬅ Nhấn để quay lại</span>
+        </div>
+    </header>
+
+    <main class="container" style="flex-direction: column; align-items: flex-start;">
+		<div class="dashboard-header">
+            <h1>Tra cứu thông tin</h1>
+            <p>Tìm kiếm thông tin về đội ngũ bác sĩ và các dịch vụ tại phòng khám</p>
+        </div>
+	
+        <div class="menu-grid">
+            <button class="menu-item" onclick="window.location.href='TCBacSi.html'">
+                <div class="btn-content">
+                    <span class="material-symbols-outlined">person_search</span>
+                    <span class="btn-title">Tra cứu thông tin bác sĩ</span>
+                    <span class="btn-desc">Xem danh sách, chuyên khoa và lịch trình bác sĩ</span>
+                </div>
+            </button>
+
+            <button class="menu-item" onclick="window.location.href='TCDichVu.html'">
+                <div class="btn-content">
+                    <span class="material-symbols-outlined">medical_information</span>
+                    <span class="btn-title">Tra cứu thông tin dịch vụ</span>
+                    <span class="btn-desc">Tìm hiểu chi tiết các gói khám và giá dịch vụ</span>
+                </div>
+            </button>
+        </div>
+    </main>
+
+    <script src="TraCuuTT.js"></script>
+</body>
+
+</html>

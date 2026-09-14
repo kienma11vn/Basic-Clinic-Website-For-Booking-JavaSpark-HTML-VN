@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thông Tin Cá Nhân</title>
+    <link rel="stylesheet" href="TTCaNhan.css">
+</head>
+
+<body>
+    <header class="full-width-header">
+        <div class="welcome-banner">
+            Xin chào, Người dùng <a href="../KHGD.html"><span id="usernameDisplay">khachhang00</span></a>! <span>⬅ Nhấn để quay lại</span>
+        </div>
+    </header>
+
+    <main class="container-management">
+        <div class="table-section">
+            <table id="customerTable">
+                <thead>
+                    <tr>
+						<th>Mã khách hàng</th>
+                        <th>CCCD</th>
+                        <th>Email đăng ký</th>
+                        <th>Họ tên</th>
+                        <th>Ngày sinh</th>
+						<th>Giới tính</th>
+                        <th>Số điện thoại</th>
+                        <th>Địa chỉ</th>                        
+                    </tr>
+                </thead>
+                <tbody id="infoDisplayBody">
+                </tbody>
+            </table>
+        </div>
+
+        <div class="action-section">
+            <button class="action-btn edit" onclick="openModal()">Thay đổi thông tin</button>
+        </div>
+    </main>
+
+	<div id="editModal" class="modal">
+		<div class="modal-content">
+			<span class="close-btn" onclick="closeModal()">&times;</span>
+			<h2 style="border-bottom: 2px solid #79bbfd; padding-bottom: 10px; margin-bottom: 10px;">Chỉnh sửa thông tin cá nhân</h2>
+			<div class="form-group">
+				<label>Số CCCD:</label>
+				<input type="text" id="editCCCD">
+			</div>
+			<div class="form-group">
+				<label>Họ và tên:</label>
+				<input type="text" id="editHoTen">
+			</div>
+			<div class="form-group">
+				<label>Ngày sinh:</label>
+				<input type="date" id="editNgaySinh">
+			</div>
+			<div class="form-group">
+				<label>Giới tính:</label>
+				<select id="editGioiTinh">
+					<option value="Nam">Nam</option>
+					<option value="Nu">Nữ</option>
+				</select>
+			</div>
+			<div class="form-group">
+				<label>Số điện thoại:</label>
+				<input type="text" id="editSDT">
+			</div>
+			<div class="form-group">
+				<label>Địa chỉ:</label>
+				<input type="text" id="editDiaChi">
+			</div>
+			<button class="action-btn edit" onclick="saveChanges()">Lưu thay đổi</button>
+		</div>
+	</div>
+
+    <script src="TTCaNhan.js"></script>
+</body>
+
+</html>

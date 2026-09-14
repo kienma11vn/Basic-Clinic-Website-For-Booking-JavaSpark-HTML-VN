@@ -1,0 +1,174 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #149c3d; /* Màu xanh nền chủ đạo */
+    font-family: 'Segoe UI', sans-serif;
+    min-height: 100vh;
+}
+
+.full-width-header {
+    width: 100%;
+    background: linear-gradient(to bottom, #ffffff 0%, #9effa6 100%);
+    border-bottom: 2px solid #90f999;
+    padding: 20px 50px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.welcome-banner {
+    font-size: 28px;
+    font-weight: bold;
+    color: #333;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+#usernameDisplay {
+    color: #0000ff;
+    text-decoration: underline;
+    font-style: italic;
+}
+
+.container-management {
+    display: flex;
+    max-width: 1300px;
+    margin: 40px auto;
+    gap: 20px;
+    padding: 0 20px;
+}
+
+/* Chia tỉ lệ 3/4 */
+.table-section {
+    flex: 3;
+    background: white;
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    overflow-x: auto;
+}
+
+/* Chia tỉ lệ 1/4 */
+.action-section {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+	
+	position: sticky;      /* Cố định vị trí khi cuộn */
+    top: 20px;             /* Cách mép trên màn hình 20px khi dính */
+    align-self: flex-start; /* Quan trọng: Giúp sticky hoạt động trong flexbox */
+    height: fit-content;   /* Chiều cao vừa đủ nội dung nút */
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th, td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+th {
+    background-color: #f2f2f2;
+    color: #333;
+}
+
+.action-btn {
+    padding: 15px;
+    font-size: 16px;
+    font-weight: bold;
+    border: 1px solid whitesmoke;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: 0.3s;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+.add { background-color: #be5c00; color: white; }
+.edit { background-color: #7c01ce; color: white; }
+.delete { background-color: #ce0e00; color: white; }
+.find { background-color: #423c41; color: white; margin-top: auto; }
+
+.action-btn:hover {
+    opacity: 0.8;
+    transform: scale(1.02);
+}
+
+/* Màu sắc cho từng trạng thái */
+.status-ChoXN {
+    color: #1221f3; /* Xanh dương */
+}
+
+.status-DaXN,
+.status-Yes {
+    color: #27ae60; /* Xanh lá */
+}
+
+.status-XNHuy,
+.status-No {
+    color: #e74c3c; /* Đỏ */
+}
+
+.status-Huy {
+	color: orange;
+}
+
+.status-KHuy {
+	color: purple;
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content {
+    background: white;
+    padding: 30px;
+    border-radius: 15px;
+    width: 400px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+	max-height: 80vh; /* Chiều cao tối đa bằng 80% chiều cao màn hình */
+    overflow-y: auto; /* Bật thanh cuộn dọc nội bộ */
+}
+
+.modal-content label {
+    display: block;
+    margin-top: 15px;
+    font-weight: bold;
+}
+
+.modal-content select,
+.modal-content input {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+.modal-actions {
+    margin-top: 20px;
+    display: flex;
+    gap: 10px;
+}
+
+.clickable-id {
+    color: #0000ff;
+    cursor: pointer;
+    text-decoration: underline;
+    font-weight: bold;
+}

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Liên Hệ Hỗ Trợ</title>
+    <link rel="stylesheet" href="LienHeHoTro.css">
+</head>
+
+<body>
+    <header class="full-width-header">
+        <div class="welcome-banner">
+            Xin chào, Người dùng <a href="DatLichKham.html"><span id="usernameDisplay">khachhang00</span></a>! <span>⬅ Nhấn
+                để quay
+                lại</span>
+        </div>
+    </header>
+
+    <main class="main-content">
+		<div class="list-container">
+			<h3>Danh sách liên hệ của bạn</h3>
+			<div id="contactList">
+				</div>
+		</div>
+
+		<div class="form-container">
+			<div class="form-box">
+				<h3>Gửi yêu cầu liên hệ mới</h3>
+				<form id="formLienHe">
+					<label>Tiêu đề liên hệ:</label>
+					<input type="text" id="tieuDe" placeholder="Ví dụ: Lỗi đặt lịch..." required>
+
+					<label>Nội dung liên hệ:</label>
+					<textarea id="contentLH" rows="6" placeholder="Nhập chi tiết vấn đề..." required></textarea>
+
+					<button type="submit">Xác nhận gửi liên hệ</button>
+				</form>
+			</div>
+			
+			<div class="search-action" style="margin-top: 0px;">
+				<button class="action-btn find" onclick="openSearchModal()" style="width: 100%;">Tìm kiếm yêu cầu liên hệ</button>
+			</div>
+		</div>
+	</main>
+
+	<div id="detailModal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.7); z-index:1000;">
+		<div style="background:white; width:500px; margin:50px auto; padding:20px; border-radius:10px; position:relative; max-height: 80vh; overflow-y: auto;">
+			<span onclick="document.getElementById('detailModal').style.display='none'" style="position:absolute; right:15px; top:10px; cursor:pointer; font-weight:bold;">X</span>
+			<h2 id="detTieuDe" style="color:#007bff"></h2>
+			<hr>
+			<p><strong>Mã YC:</strong> <span id="detMa"></span></p>
+			<p><strong>Ngày gửi:</strong> <span id="detNgayYC"></span></p>
+			<p><strong>Nội dung yêu cầu:</strong></p>
+			<div id="detNoiDung" style="background:#f4f4f4; padding:10px; margin:10px 0;"></div>
+			<p><strong>Lễ tân phản hồi:</strong></p>
+			<div id="detTraLoi" style="background:#e3f2fd; padding:10px; border-left:4px solid #007bff;"></div>
+		</div>
+	</div>
+	
+	<div id="searchModal" class="modal">
+		<div class="modal-content">
+			<h3>Tìm kiếm yêu cầu hỗ trợ</h3>
+			<label>Tiêu đề:</label>
+			<input type="text" id="searchTieuDe" placeholder="Nhập tiêu đề cần tìm...">
+
+			<label>Ngày gửi:</label>
+			<input type="date" id="searchNgay">
+			
+			<label>Trạng thái trả lời:</label>
+			<div style="display: flex; gap: 15px; margin-top: 5px;">
+				<label style="font-weight: normal;">
+					<input type="checkbox" id="chkChuaTL" checked> Chưa trả lời
+				</label>
+				<label style="font-weight: normal;">
+					<input type="checkbox" id="chkDaTL" checked> Đã trả lời
+				</label>
+			</div>
+
+			<div class="modal-actions">
+				<button class="action-btn find" onclick="executeSearch()">Tìm kiếm</button>
+				<button class="action-btn delete" onclick="closeSearchModal()">Đóng</button>
+			</div>
+		</div>
+	</div>
+
+    <script src="LienHeHoTro.js"></script>
+</body>
+
+</html>

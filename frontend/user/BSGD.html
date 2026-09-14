@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Giao diện Bác sĩ</title>
+    <link rel="stylesheet" href="BSGD.css">
+	<link rel="stylesheet" href="Shared.css">
+</head>
+
+<body>
+    <header class="full-width-header">
+        <div class="welcome-banner">
+            Xin chào, Bác sĩ <a href="BSGD.html"><span id="usernameDisplay">bacsi00</span></a>!
+        </div>
+    </header>
+
+    <main class="container" style="flex-direction: column; align-items: flex-start;">
+		<div class="dashboard-header">
+            <h1>Bảng điều khiển bác sĩ</h1>
+            <p>Chào mừng trở lại, vui lòng chọn chức năng quản lý bạn cần sử dụng bên dưới</p>
+        </div>
+	
+        <div class="menu-grid">
+            <button class="menu-item" onclick="window.location.href='bs/XemLichBS.html'">
+                <div class="btn-content">
+                    <span class="material-symbols-outlined">calendar_today</span>
+                    <span class="btn-title">Xem lịch khám bệnh</span>
+                    <span class="btn-desc">Quản lý danh sách các ca khám trong ngày</span>
+                </div>
+            </button>
+
+            <button class="menu-item" onclick="window.location.href='bs/XemBenhNhan.html'">
+                <div class="btn-content">
+                    <span class="material-symbols-outlined">person_search</span>
+                    <span class="btn-title">Xem thông tin bệnh nhân</span>
+                    <span class="btn-desc">Tra cứu hồ sơ của bệnh nhân</span>
+                </div>
+            </button>
+
+            <button class="menu-item" onclick="window.location.href='bs/LienHeLT.html'">
+                <div class="btn-content">
+                    <span class="material-symbols-outlined">contact_support</span>
+                    <span class="btn-title">Liên hệ lễ tân</span>
+                    <span class="btn-desc">Trao đổi nhanh chóng với bộ phận hỗ trợ</span>
+                </div>
+            </button>
+
+            <div class="sub-group">
+                <button class="menu-item small" onclick="window.location.href='DoiMKGD.html'">
+                    <span class="material-symbols-outlined" style="font-size: 20px;">lock_reset</span>
+                    Đổi mật khẩu
+                </button>
+                <button class="menu-item small btn-logout" onclick="logout()">
+                    <span class="material-symbols-outlined" style="font-size: 20px;">logout</span>
+                    Đăng xuất
+                </button>
+            </div>
+        </div>
+		
+    </main>
+	
+	<footer class="footer-simple">
+        <p>© 2026 PHÒNG KHÁM AN TÂM. Tất cả quyền được bảo lưu.</p>
+    </footer>
+
+    <script src="BSGD.js"></script>
+</body>
+
+</html>

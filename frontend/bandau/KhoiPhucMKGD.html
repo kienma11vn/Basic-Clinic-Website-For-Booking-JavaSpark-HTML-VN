@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Phòng Khám AN TÂM - Khôi phục mật khẩu</title>
+    <link rel="stylesheet" href="DangkyDangnhapKhoiphuc.css">
+</head>
+<body>
+    <div class="card-wrapper">
+        <div class="info-section">
+            <div class="logo-group">
+                <div class="logo-icon">😊</div>
+                <div>
+                    <div><a class="brand-name" href="../PK_TrangChu.html">Phòng khám An Tâm</a></div>
+                </div>
+            </div>
+            <h1>Phòng Khám Ngoại Khoa Hiện Đại</h1>
+            <p>Đăng nhập để đặt lịch khám, quản lý hồ sơ sức khỏe và nhận tư vấn từ đội ngũ bác sĩ chuyên nghiệp.</p>
+            
+            <div class="benefit-item">✓ Đặt lịch dễ dàng</div>
+            <div class="benefit-item">✓ Theo dõi lịch sử</div>
+            <div class="benefit-item">✓ Tư vấn trực tuyến</div>
+            
+            <div class="footer-quote">"Nụ cười tự tin - Sức khỏe trọn vẹn"</div>
+			<p>© 2026 PHÒNG KHÁM AN TÂM. Tất cả quyền được bảo lưu.</p>
+        </div>
+
+        <div class="form-section">
+            <h2>Khôi phục mật khẩu!</h2>
+
+            <form id="forgotPasswordForm">
+                <div class="input-group">
+                    <label>Tên tài khoản:</label>
+                    <input type="text" id="tenTK" placeholder="Nhập tên tài khoản" required>
+                </div>
+                <div class="input-group">
+                    <label>Số điện thoại:</label>
+                    <input type="tel" id="sdt" placeholder="Nhập số điện thoại" required>
+                </div>
+                <div class="input-group">
+                    <label>Email đăng ký:</label>
+                    <input type="email" id="email" placeholder="Nhập email" required>
+                </div>
+                <button type="button" id="btnGuiOTP" onclick="guiOTP()" class="btn-main">Gửi mã xác nhận →</button>   
+            </form>
+        </div>
+    </div>
+    
+    <script>
+        async function guiOTP() {
+            const btn = document.getElementById('btnGuiOTP');
+            const data = {
+                tenTK: document.getElementById('tenTK').value,
+                sdt: document.getElementById('sdt').value,
+                email: document.getElementById('email').value
+            };
+
+            // Kiểm tra rỗng cơ bản
+            if (!data.tenTK || !data.sdt || !data.email) {
+                alert("Vui lòng nhập đầy đủ thông tin!");
+                return;
+            }
+
+            // Hiệu ứng chờ
+            btn.innerText = "Đang gửi...";
+            btn.disabled = true;
+
+            try {
+                const res = await fetch('http://localhost:9999/api/gui-otp', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(data)
+                });
+                
+                const result = await res.json();
+
+                if (res.ok && result.status === 'success') {
+                    alert(result.message);
+                    // LƯU QUAN TRỌNG: Lưu email và tên TK vào sessionStorage để các trang sau lấy dùng
+                    sessionStorage.setItem('resetEmail', data.email);
+                    sessionStorage.setItem('resetUser', data.tenTK);
+                    
+                    // Chuyển sang trang nhập mã OTP
+                    window.location.href = 'KhoiPhucMK2GD.html';
+                } else {
+                    alert(result.message || "Thông tin không chính xác!");
+                }
+            } catch (error) {
+				console.error("Lỗi:", error);
+				alert("Lỗi kết nối hoặc timeout. Vui lòng thử lại bằng mạng khác!");
+			} finally {
+				btn.innerText = "Gửi mã xác nhận →";
+				btn.disabled = false;
+			}
+        }
+    </script>
+</body>
+</html>

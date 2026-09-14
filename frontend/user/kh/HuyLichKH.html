@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Hủy Lịch Khám</title>
+    <link rel="stylesheet" href="SuaLichKH.css">
+</head>
+<body>
+    <header class="full-width-header">
+        <div class="welcome-banner">
+            Xin chào, Người dùng <a href="DatLichKham.html"><span id="usernameDisplay">khachhang00</span></a>! <span>⬅ Nhấn
+                để quay
+                lại</span>
+        </div>
+    </header>
+
+    <main class="container-management">
+        <div class="table-section">
+            <p style="margin-bottom: 10px; color: #666;">Chọn <b>Mã đặt lịch</b> để thực hiện hủy</p>
+            <table id="huyLichTable">
+                <thead>
+                    <tr>
+                        <th>Mã đặt lịch</th>
+                        <th>Ngày khám</th>
+                        <th>Bác sĩ</th>
+                        <th>Dịch vụ</th>
+                        <th>Tình trạng</th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+        </div>
+		
+		<div class="action-section">
+            <button class="action-btn find" onclick="findLK()">Tìm kiếm lịch khám</button>
+        </div>
+    </main>
+
+    <div id="confirmModal" class="modal">
+        <div class="modal-content" style="text-align: center;">
+            <h3 style="color: #ce0e00;">Xác nhận hủy lịch</h3>
+            <p style="margin: 20px 0;">Bạn có chắc chắn muốn hủy lịch khám mã: <b id="displayMaDL"></b> không?</p>
+            <div style="display: flex; gap: 10px; justify-content: center;">
+                <button class="action-btn delete" id="btnConfirmHuy">Đồng ý hủy</button>
+                <button class="action-btn find" onclick="closeModal()">Quay lại</button>
+            </div>
+        </div>
+    </div>
+	
+	<div id="searchModal" class="modal">
+		<div class="modal-content">
+			<h3>Tìm kiếm lịch khám</h3>
+			<div id="searchForm">
+				<label>Mã đặt lịch:</label>
+				<input type="text" id="searchMaDL" placeholder="Nhập mã đặt lịch...">
+
+				<label>Ngày khám:</label>
+				<input type="date" id="searchNgay">
+
+				<label>Tên Bác sĩ:</label>
+				<input type="text" id="searchBacSi" placeholder="Nhập tên bác sĩ...">
+
+				<label>Dịch vụ:</label>
+				<input type="text" id="searchDV" placeholder="Nhập tên dịch vụ...">
+
+				<div class="modal-actions">
+					<button class="action-btn find" onclick="executeSearch()">Tìm kiếm</button>
+					<button class="action-btn delete" onclick="closeSearchModal()">Đóng</button>
+				</div>
+			</div>
+		</div>
+	</div>
+
+    <script src="HuyLichKH.js"></script>
+</body>
+</html>

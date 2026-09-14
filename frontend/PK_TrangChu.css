@@ -1,0 +1,117 @@
+body {
+    background-color: #79bbfd;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+	/* Thêm các dòng dưới đây để footer hoạt động giống KHGD */
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    margin: 0;
+}
+
+.container.mt-2 {
+    flex: 1;
+}
+
+.clinic-info {
+    border-left: 5px solid #0d6efd;
+    /* Tạo điểm nhấn bằng đường kẻ màu xanh bên trái */
+    font-size: 0.95rem;
+    color: #444;
+}
+
+.clinic-info strong {
+    color: #0d6efd;
+}
+
+#clinicCarousel {
+    height: 450px;
+    /* Cố định chiều cao của slideshow */
+}
+
+#clinicCarousel img {
+    height: 100%;
+    /* Đảm bảo ảnh chiếm toàn bộ chiều cao của carousel */
+    object-fit: cover;
+    width: 100%;
+    /* Đảm bảo ảnh chiếm toàn bộ chiều rộng */
+}
+
+/* Kiểu dáng cho vùng mờ dần dưới ảnh */
+.bottom-fade-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 33.33%;
+    /* Chiếm 1/3 chiều cao */
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.8), rgba(14, 12, 12, 0));
+    /* Gradient mờ dần từ đen lên trong suốt */
+    color: white;
+    padding: 20px;
+    display: flex;
+    /* Sử dụng flexbox để căn chỉnh nội dung */
+    flex-direction: column;
+    justify-content: flex-end;
+    /* Căn nội dung xuống dưới cùng */
+    text-align: left;
+    opacity: 1;
+    /* Mặc định là hiển thị */
+    transition: opacity 0.2s ease-in-out;
+    /* Hiệu ứng mờ dần khi chuyển slide */
+}
+
+.carousel-item.active .bottom-fade-overlay {
+    opacity: 1;
+    /* Đảm bảo overlay hiện rõ khi slide active */
+}
+
+.carousel-item .bottom-fade-overlay {
+    opacity: 0;
+    /* Ẩn overlay của các slide không active */
+}
+
+/* Đảm bảo nút điều hướng nằm trên cùng */
+.carousel-control-prev,
+.carousel-control-next {
+    z-index: 10;
+    width: 8%;
+    /* Thu nhỏ vùng bấm để không cản trở tương tác khác */
+}
+
+/* Hiệu ứng làm đậm nút khi di chuột vào */
+.carousel-control-prev:hover,
+.carousel-control-next:hover {
+    background: rgba(0, 0, 0, 0.1);
+}
+
+#action-area {
+    padding: 20px;
+    background: white;
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+}
+
+/* Hiệu ứng chuyển cảnh cho các nút */
+#authButtons {
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.btn {
+    transition: all 0.3s ease;
+}
+
+.btn:hover {
+    transform: scale(1.05);
+}

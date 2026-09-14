@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Giao diện Người dùng</title>
+    <link rel="stylesheet" href="KHGD.css">
+    <link rel="stylesheet" href="Shared.css">
+</head>
+
+<body>
+    <header class="full-width-header">
+        <div class="welcome-banner">
+            Xin chào, Người dùng <a href="KHGD.html"><span id="usernameDisplay">khachhang00</span></a>!
+        </div>
+    </header>
+
+    <main class="container" style="flex-direction: column; align-items: flex-start;">
+		
+		<div class="dashboard-header">
+            <h1>Bảng điều khiển khách hàng</h1>
+            <p>Chào mừng trở lại, vui lòng chọn dịch vụ bạn cần sử dụng bên dưới</p>
+        </div>
+	
+        <div class="menu-grid">
+            <button class="menu-item" onclick="window.location.href='kh/DatLichKham.html'">
+                <div class="btn-content">
+                    <span class="material-symbols-outlined">calendar_month</span>
+                    <span class="btn-title">Đặt lịch khám</span>
+                    <span class="btn-desc">Đặt hẹn bác sĩ nhanh chóng</span>
+                </div>
+            </button>
+
+            <button class="menu-item" onclick="window.location.href='kh/XemLichKH.html'">
+                <div class="btn-content">
+                    <span class="material-symbols-outlined">event_note</span>
+                    <span class="btn-title">Xem lịch khám đã đặt</span>
+                    <span class="btn-desc">Quản lý các cuộc hẹn của bạn</span>
+                </div>
+            </button>
+
+            <button class="menu-item" onclick="window.location.href='kh/TraCuuTT.html'">
+                <div class="btn-content">
+                    <span class="material-symbols-outlined">search</span>
+                    <span class="btn-title">Tra cứu thông tin</span>
+                    <span class="btn-desc">Tìm hiểu về bác sĩ và dịch vụ phòng khám</span>
+                </div>
+            </button>
+
+            <button class="menu-item" onclick="window.location.href='kh/DanhGia.html'">
+                <div class="btn-content">
+                    <span class="material-symbols-outlined">grade</span>
+                    <span class="btn-title">Đánh giá</span>
+                    <span class="btn-desc">Góp ý chất lượng phòng khám</span>
+                </div>
+            </button>
+
+            <button class="menu-item" onclick="window.location.href='kh/TTCaNhan.html'">
+                <div class="btn-content">
+                    <span class="material-symbols-outlined">badge</span>
+                    <span class="btn-title">Thông tin cá nhân</span>
+                    <span class="btn-desc">Cập nhật hồ sơ cá nhân</span>
+                </div>
+            </button>
+
+            <div class="sub-group">
+                <button class="menu-item small" onclick="window.location.href='DoiMKGD.html'">
+                    <span class="material-symbols-outlined" style="font-size: 20px;">lock_reset</span>
+                    Đổi mật khẩu
+                </button>
+                <button class="menu-item small btn-logout" onclick="logout()">
+                    <span class="material-symbols-outlined" style="font-size: 20px;">logout</span>
+                    Đăng xuất
+                </button>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer-simple">
+        <p>© 2026 PHÒNG KHÁM AN TÂM. Tất cả quyền được bảo lưu.</p>
+    </footer>
+
+    <script src="KHGD.js"></script>
+</body>
+
+</html>

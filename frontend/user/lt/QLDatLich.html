@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quản Lý Đặt Lịch</title>
+    <link rel="stylesheet" href="QLDatLich.css">
+	<link rel="stylesheet" href="Shared.css">
+</head>
+
+<body>
+    <header class="full-width-header">
+        <div class="welcome-banner">
+            Xin chào, Lễ tân <a href="../LTGD.html"><span id="usernameDisplay">letan00</span></a>! <span>⬅ Nhấn để quay lại</span>
+        </div>
+    </header>
+
+    <main class="container" style="flex-direction: column; align-items: flex-start;">
+        <div class="dashboard-header">
+            <h1>Điều phối lịch hẹn</h1>
+            <p>Xử lý các yêu cầu đến khám, đặt lịch, hủy lịch và hỗ trợ cho bệnh nhân</p>
+        </div>
+
+        <div class="menu-grid">
+            <button class="menu-item" onclick="window.location.href='XNDenKham.html'">
+                <div class="btn-content">
+                    <span class="material-symbols-outlined">how_to_reg</span>
+                    <span class="btn-title">Xác nhận đến khám</span>
+                    <span class="btn-desc">Đánh dấu khách đã có mặt tại phòng khám</span>
+                </div>
+            </button>
+            <button class="menu-item" onclick="window.location.href='XNDatLK.html'">
+                <div class="btn-content">
+                    <span class="material-symbols-outlined">event_available</span>
+                    <span class="btn-title">Xác nhận đặt lịch</span>
+                    <span class="btn-desc">Duyệt các yêu cầu đặt lịch mới</span>
+                </div>
+            </button>
+            <button class="menu-item" onclick="window.location.href='XNHuyLK.html'">
+                <div class="btn-content">
+                    <span class="material-symbols-outlined">event_busy</span>
+                    <span class="btn-title">Xác nhận hủy lịch</span>
+                    <span class="btn-desc">Xử lý yêu cầu hủy hẹn từ khách hàng</span>
+                </div>
+            </button>
+            <button class="menu-item" onclick="window.location.href='XemTTLichKham.html'">
+                <div class="btn-content">
+                    <span class="material-symbols-outlined">list_alt</span>
+                    <span class="btn-title">Thông tin lịch khám</span>
+                    <span class="btn-desc">Xem tổng quát tất cả các ca khám</span>
+                </div>
+            </button>
+            <button class="menu-item" onclick="window.location.href='HoTroKHBS.html'">
+                <div class="btn-content">
+                    <span class="material-symbols-outlined">contact_support</span>
+                    <span class="btn-title">Hỗ trợ khách hàng & bác sĩ</span>
+                    <span class="btn-desc">Giải đáp thắc mắc và xử lý sự cố</span>
+                </div>
+            </button>
+        </div>
+    </main>
+
+    <script src="QLDatLich.js"></script>
+</body>
+
+</html>

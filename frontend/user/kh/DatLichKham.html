@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Đặt Lịch Khám</title>
+    <link rel="stylesheet" href="DatLichKham.css">
+	<link rel="stylesheet" href="Shared.css">
+</head>
+
+<body>
+    <header class="full-width-header">
+        <div class="welcome-banner">
+            Xin chào, Người dùng <a href="../KHGD.html"><span id="usernameDisplay">khachhang00</span></a>! <span>⬅ Nhấn để quay lại</span>
+        </div>
+    </header>
+
+    <main class="container" style="flex-direction: column; align-items: flex-start;">
+		<div class="dashboard-header">
+            <h1>Thực hiện đặt lịch</h1>
+            <p>Vui lòng chọn các chức năng đặt lịch mà bạn mong muốn</p>
+        </div>
+	
+        <div class="menu-grid">
+            <button class="menu-item" onclick="window.location.href='DangKyLich.html'">
+                <div class="btn-content">
+                    <span class="material-symbols-outlined">add_circle</span>
+                    <span class="btn-title">Đăng ký lịch</span>
+                    <span class="btn-desc">Tạo lịch hẹn khám bệnh mới</span>
+                </div>
+            </button>
+
+            <button class="menu-item" onclick="window.location.href='SuaLichKH.html'">
+                <div class="btn-content">
+                    <span class="material-symbols-outlined">edit_calendar</span>
+                    <span class="btn-title">Sửa thông tin lịch khám</span>
+                    <span class="btn-desc">Thay đổi thông tin lịch khám bệnh</span>
+                </div>
+            </button>
+
+            <button class="menu-item" onclick="window.location.href='HuyLichKH.html'">
+                <div class="btn-content">
+                    <span class="material-symbols-outlined">event_busy</span>
+                    <span class="btn-title">Hủy lịch khám</span>
+                    <span class="btn-desc">Hủy bỏ lịch hẹn không thể tham gia</span>
+                </div>
+            </button>
+
+            <button class="menu-item" onclick="window.location.href='LienHeHoTro.html'">
+                <div class="btn-content">
+                    <span class="material-symbols-outlined">support_agent</span>
+                    <span class="btn-title">Liên hệ hỗ trợ</span>
+                    <span class="btn-desc">Gửi yêu cầu trợ giúp</span>
+                </div>
+            </button>
+        </div>
+    </main>
+
+    <script src="DatLichKham.js"></script>
+</body>
+
+</html>

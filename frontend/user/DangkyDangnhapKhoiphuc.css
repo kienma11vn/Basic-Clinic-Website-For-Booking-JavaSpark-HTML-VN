@@ -1,0 +1,104 @@
+:root {
+    --primary-blue: #1A5CFF;
+    --gradient-start: #007AFF;
+    --gradient-end: #00C2FF;
+}
+
+body {
+    background-color: #F0F4F8;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.brand-name {
+    font-size: 1.5rem;
+    color: #ffffff;
+    font-weight: bold;
+    font-style: italic;
+}
+
+.card-wrapper {
+    display: flex;
+    width: 900px;
+    background: white;
+    border-radius: 32px; /* Bo góc cực đại như trong ảnh */
+    overflow: hidden;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+}
+
+.info-section {
+    flex: 1.2;
+    background: linear-gradient(180deg, var(--gradient-start) 0%, var(--gradient-end) 100%);
+    padding: 50px;
+    color: white;
+    position: relative;
+}
+
+.logo-icon {
+    background: white;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--gradient-start);
+    font-size: 20px;
+}
+
+.form-section {
+    flex: 1;
+    padding: 50px;
+    background: white;
+}
+
+.tab-container {
+    background: #F2F2F2;
+    padding: 5px;
+    border-radius: 12px;
+    display: flex;
+    margin-bottom: 25px;
+}
+
+.tab {
+    flex: 1;
+    border: none;
+    padding: 10px;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.tab.active {
+    background: white;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.btn-main {
+    width: 100%;
+    padding: 15px;
+    background: var(--primary-blue);
+    color: white;
+    border: none;
+    border-radius: 12px;
+    font-weight: bold;
+    margin-top: 20px;
+    cursor: pointer;
+}
+
+input[type="text"],
+input[type="password"],
+input[type="email"],
+input[type="tel"],
+textarea,
+select {
+    width: 100%;
+    margin: 5px; 
+    padding: 8px 10px;
+    border: 4px solid gray; 
+    border-radius: 10px;
+    box-sizing: border-box; 
+    font-size: 14px;
+}

@@ -1,0 +1,154 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #79bbfd;
+    font-family: 'Segoe UI', sans-serif;
+    min-height: 100vh;
+}
+
+.full-width-header {
+    width: 100%;
+    background: linear-gradient(to bottom, #ffffff 0%, #95d0fa 100%);
+    border-bottom: 2px solid #90caf9;
+    padding: 20px 50px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.welcome-banner {
+    font-size: 28px;
+    font-weight: bold;
+    color: #333;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+#usernameDisplay {
+    color: #0000ff;
+    text-decoration: underline;
+    font-style: italic;
+}
+
+.container-management {
+    display: flex;
+    max-width: 1300px;
+    margin: 40px auto;
+    gap: 20px;
+    padding: 0 20px;
+}
+
+/* Chia tỉ lệ 3/4 */
+.table-section {
+    flex: 3;
+    background: white;
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    overflow-x: auto;
+}
+
+/* Chia tỉ lệ 1/4 */
+.action-section {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+	
+	position: sticky;      /* Cố định vị trí khi cuộn */
+    top: 20px;             /* Cách mép trên màn hình 20px khi dính */
+    align-self: flex-start; /* Quan trọng: Giúp sticky hoạt động trong flexbox */
+    height: fit-content;   /* Chiều cao vừa đủ nội dung nút */
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th, td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+th {
+    background-color: #f2f2f2;
+    color: #333;
+}
+
+.action-btn {
+    padding: 15px;
+    font-size: 16px;
+    font-weight: bold;
+    border: 1px solid whitesmoke;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: 0.3s;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+.add { background-color: #be5c00; color: white; }
+.edit { background-color: #7c01ce; color: white; }
+.delete { background-color: #ce0e00; color: white; }
+.find { background-color: #423c41; color: white; margin-top: auto; }
+
+.action-btn:hover {
+    opacity: 0.8;
+    transform: scale(1.02);
+}
+
+.modal {
+    display: none; /* Ẩn mặc định, JS sẽ bật khi nhấn */
+    position: fixed; /* Cố định trên màn hình */
+    z-index: 1000; /* Luôn nằm trên cùng */
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto; /* Bật thanh cuộn nếu cần cho lớp nền mờ */
+    background-color: rgba(0,0,0,0.5); /* Nền mờ phía sau */
+}
+
+/* Cửa sổ Modal chứa nội dung */
+.modal-content {
+    background-color: white;
+    margin: 5% auto; 
+    padding: 30px;
+    border-radius: 15px;
+    width: 90%;
+    max-width: 500px; /* Chiều rộng tối đa */
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    position: relative;
+    
+    /*Giới hạn chiều cao và bật thanh cuộn */
+    max-height: 80vh; /* Chiều cao tối đa bằng 80% chiều cao màn hình */
+    overflow-y: auto; /* Bật thanh cuộn dọc nội bộ */
+}
+
+.close-btn {
+    position: absolute;
+    right: 20px;
+    top: 10px;
+    font-size: 28px;
+    cursor: pointer;
+}
+
+.form-group {
+    margin-bottom: 15px;
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group label {
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.form-group input, .form-group select {
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}

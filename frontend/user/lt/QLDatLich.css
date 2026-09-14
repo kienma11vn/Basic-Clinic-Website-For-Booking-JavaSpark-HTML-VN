@@ -1,0 +1,111 @@
+/* Reset căn lề cơ bản */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #149c3d; /* Màu xanh nền chủ đạo */
+    font-family: 'Segoe UI', sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+}
+
+/* Header chiếm toàn bộ chiều rộng trên cùng */
+.full-width-header {
+    width: 100%;
+    background: linear-gradient(to bottom, #ffffff 0%, #9effa6 100%);
+    border-bottom: 2px solid #90f999;
+    padding: 20px 50px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    margin-bottom: 50px; /* Khoảng cách với các nút bên dưới */
+}
+
+.welcome-banner {
+    font-size: 28px;
+    font-weight: bold;
+    color: #333;
+    max-width: 1200px;
+    margin: 0 auto; /* Căn giữa nội dung bên trong header rộng */
+}
+
+#usernameDisplay {
+    color: #0000ff;
+    text-decoration: underline;
+    font-style: italic;
+}
+
+/* Container chứa lưới nút bấm */
+.container {
+    width: 90%;
+    max-width: 1100px;
+    flex-grow: 1;
+    display: flex;
+    align-items: center;
+}
+
+/* Lưới nút bấm: Hàng 1 có 3 nút, hàng 2 có 2 nút căn giữa */
+.menu-grid {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr); /* Chia lưới thành 6 cột nhỏ để dễ căn chỉnh */
+    gap: 30px;
+    width: 100%;
+    padding-bottom: 50px;
+}
+
+/* Cấu hình cho 3 nút đầu tiên (Hàng 1) */
+.menu-item:nth-child(1),
+.menu-item:nth-child(2),
+.menu-item:nth-child(3) {
+    grid-column: span 2; /* Mỗi nút chiếm 2 cột (3 nút x 2 = 6 cột) */
+}
+
+/* Cấu hình cho 2 nút tiếp theo (Hàng 2) */
+.menu-item:nth-child(4) {
+    grid-column: 2 / span 2; /* Bắt đầu từ cột 2, chiếm 2 cột (để tạo khoảng trống bên trái) */
+}
+
+.menu-item:nth-child(5) {
+    grid-column: 4 / span 2; /* Bắt đầu từ cột 4, chiếm 2 cột */
+}
+
+/* Kích thước nút lớn như hình minh họa */
+.menu-item {
+    background-color: #b9fdb4;
+    border: 2px solid #6dfa68;
+    border-radius: 20px;
+    padding: 50px 20px; /* Tăng padding để nút to hơn */
+    font-size: 20px;
+    font-weight: bold;
+    color: #000;
+    cursor: pointer;
+    box-shadow: 0 6px 12px rgba(0,0,0,0.1);
+    transition: all 0.3s ease;
+}
+
+.menu-item:hover {
+    transform: translateY(-8px);
+    background-color: #ffffff;
+    border-color: #00ff4c;
+}
+
+/* Nhóm 2 nút nhỏ cuối cùng */
+.sub-group {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.menu-item.small {
+    padding: 20px;
+    font-size: 18px;
+    flex: 1;
+}
+
+.btn-logout {
+    background-color: #fce4ec;
+    border-color: #f8bbd0;
+}

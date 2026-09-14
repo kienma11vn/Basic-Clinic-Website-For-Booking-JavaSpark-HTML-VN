@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Phòng Khám AN TÂM - Xác thực OTP</title>
+    <link rel="stylesheet" href="DangkyDangnhapKhoiphuc.css">
+</head>
+<body>
+    <div class="card-wrapper">
+        <div class="info-section">
+            <div class="logo-group">
+                <div class="logo-icon">😊</div>
+                <div>
+                    <div><a class="brand-name" href="../PK_TrangChu.html">Phòng khám An Tâm</a></div>
+                </div>
+            </div>
+            <h1>Phòng Khám Ngoại Khoa Hiện Đại</h1>
+            <p>Đăng nhập để đặt lịch khám, quản lý hồ sơ sức khỏe và nhận tư vấn từ đội ngũ bác sĩ chuyên nghiệp.</p>
+            
+            <div class="benefit-item">✓ Đặt lịch dễ dàng</div>
+            <div class="benefit-item">✓ Theo dõi lịch sử</div>
+            <div class="benefit-item">✓ Tư vấn trực tuyến</div>
+            
+            <div class="footer-quote">"Nụ cười tự tin - Sức khỏe trọn vẹn"</div>
+			<p>© 2026 PHÒNG KHÁM AN TÂM. Tất cả quyền được bảo lưu.</p>
+        </div>
+
+        <div class="form-section">
+            <h2>Xác thực mã OTP</h2>
+            <p style="margin-bottom: 20px; color: #666;">Vui lòng nhập mã 6 số đã được gửi tới Email của bạn.</p>
+
+            <form id="otpForm">
+                <div class="input-group">
+                    <label>Nhập mã xác nhận:</label><br>
+                    <input type="text" id="otpInput" placeholder="Ví dụ: 123456" maxlength="6" required 
+                           style="text-align: center; font-size: 1.5rem; letter-spacing: 5px;">
+                </div>
+                
+                <button type="button" onclick="xacNhanOTP()" class="btn-main">Xác nhận →</button>
+                <div style="margin-top: 15px; text-align: center;">
+                    <a href="KhoiPhucMKGD.html" style="color: var(--primary-blue); text-decoration: none; font-size: 0.9rem;"> Quay lại gửi lại mã</a>
+                </div>
+            </form>
+        </div>
+    </div>
+    
+    <script>
+        async function xacNhanOTP() {
+            const otp = document.getElementById('otpInput').value;
+            const email = sessionStorage.getItem('resetEmail');
+
+            if (!otp) {
+                alert("Vui lòng nhập mã OTP!");
+                return;
+            }
+
+            if (!email) {
+                alert("Lỗi phiên làm việc. Vui lòng quay lại bước 1!");
+                window.location.href = 'KhoiPhucMKGD.html';
+                return;
+            }
+
+            try {
+                const res = await fetch('http://localhost:9999/api/xac-nhan-otp', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ email: email, otp: otp })
+                });
+
+                const result = await res.json();
+
+                if (res.ok && result.status === 'success') {
+                    // Chuyển sang trang đặt mật khẩu mới
+                    window.location.href = 'KhoiPhucMK3GD.html';
+                } else {
+                    alert(result.message || "Mã OTP không chính xác hoặc đã hết hạn!");
+                }
+            } catch (error) {
+                console.error("Lỗi:", error);
+                alert("Không thể kết nối đến máy chủ!");
+            }
+        }
+    </script>
+</body>
+</html>

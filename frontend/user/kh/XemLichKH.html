@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Xem Lịch Khám Đã Đặt</title>
+    <link rel="stylesheet" href="XemLichKH.css">
+</head>
+
+<body>
+    <header class="full-width-header">
+        <div class="welcome-banner">
+            Xin chào, Người dùng <a href="../KHGD.html"><span id="usernameDisplay">khachhang00</span></a>! <span>⬅ Nhấn để quay
+                lại</span>
+        </div>
+    </header>
+
+    <main class="container-management">
+        <div class="table-section">
+            <table id="lichKHTable">
+                <thead>
+                    <tr>
+                        <th>Mã đặt lịch</th>
+                        <th>Ngày khám</th>
+                        <th>Bác sĩ</th>
+                        <th>Dịch vụ</th>
+                        <th>Tình trạng</th>
+                        <th>Khách đến khám</th>
+                        <th>Đánh giá</th>
+                    </tr>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="action-section">
+            <button class="action-btn find" onclick="findLK()">Tìm kiếm lịch khám</button>
+        </div>
+
+    </main>
+	
+	<div id="searchModal" class="modal">
+		<div class="modal-content">
+			<h3>Tìm kiếm lịch khám</h3>
+			<div id="searchForm">
+				<label>Mã đặt lịch:</label>
+				<input type="text" id="searchMaDL" placeholder="Nhập mã đặt lịch...">
+
+				<label>Ngày khám:</label>
+				<input type="date" id="searchNgay">
+
+				<label>Tên Bác sĩ:</label>
+				<input type="text" id="searchBacSi" placeholder="Nhập tên bác sĩ...">
+
+				<label>Dịch vụ:</label>
+				<input type="text" id="searchDV" placeholder="Nhập tên dịch vụ...">
+
+				<div class="modal-actions">
+					<button class="action-btn find" onclick="executeSearch()">Tìm ngay</button>
+					<button class="action-btn delete" onclick="closeSearchModal()">Đóng</button>
+				</div>
+			</div>
+		</div>
+	</div>
+
+    <script src="XemLichKH.js"></script>
+</body>
+
+</html>

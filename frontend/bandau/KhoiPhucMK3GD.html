@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Phòng Khám AN TÂM - Đặt mật khẩu mới</title>
+    <link rel="stylesheet" href="DangkyDangnhapKhoiphuc.css">
+</head>
+<body>
+    <div class="card-wrapper">
+        <div class="info-section">
+            <div class="logo-group">
+                <div class="logo-icon">😊</div>
+                <div>
+                    <div><a class="brand-name" href="../PK_TrangChu.html">Phòng khám An Tâm</a></div>
+                </div>
+            </div>
+            <h1>Phòng Khám Ngoại Khoa Hiện Đại</h1>
+            <p>Đăng nhập để đặt lịch khám, quản lý hồ sơ sức khỏe và nhận tư vấn từ đội ngũ bác sĩ chuyên nghiệp.</p>
+            
+            <div class="benefit-item">✓ Đặt lịch dễ dàng</div>
+            <div class="benefit-item">✓ Theo dõi lịch sử</div>
+            <div class="benefit-item">✓ Tư vấn trực tuyến</div>
+            
+            <div class="footer-quote">"Nụ cười tự tin - Sức khỏe trọn vẹn"</div>
+			<p>© 2026 PHÒNG KHÁM AN TÂM. Tất cả quyền được bảo lưu.</p>
+        </div>
+
+        <div class="form-section">
+            <h2>Thiết lập mật khẩu mới</h2>
+            <p style="margin-bottom: 20px; color: #666;">Vui lòng nhập mật khẩu mới cho tài khoản của bạn.</p>
+
+            <form id="resetPasswordForm">
+                <div class="input-group">
+                    <label>Mật khẩu mới:</label><br>
+                    <input type="password" id="newPass" placeholder="Từ 6-15 ký tự" required minlength="6" maxlength="15">
+                </div>
+                <div class="input-group">
+                    <label>Nhập lại mật khẩu:</label><br>
+                    <input type="password" id="confirmPass" placeholder="Xác nhận lại mật khẩu" required minlength="6" maxlength="15">
+                </div>
+                
+                <button type="submit" class="btn-main" id="btnXacNhan">Cập nhật mật khẩu →</button>
+            </form>
+        </div>
+    </div>
+    
+    <script>
+        document.getElementById('resetPasswordForm').addEventListener('submit', async function(event) {
+            event.preventDefault();
+            
+            const btn = document.getElementById('btnXacNhan');
+            const newPass = document.getElementById('newPass').value;
+            const confirmPass = document.getElementById('confirmPass').value;
+            const tenTK = sessionStorage.getItem('resetUser'); // Lấy tên tài khoản từ bước 1
+
+            // 1. Kiểm tra khớp mật khẩu
+            if (newPass !== confirmPass) {
+                alert("Mật khẩu nhập lại không khớp!");
+                return;
+            }
+
+            // 2. Kiểm tra phiên làm việc
+            if (!tenTK) {
+                alert("Không tìm thấy thông tin tài khoản. Vui lòng thực hiện lại từ đầu!");
+                window.location.href = 'KhoiPhucMKGD.html';
+                return;
+            }
+
+            btn.innerText = "Đang xử lý...";
+            btn.disabled = true;
+
+            try {
+                // 3. Gọi API cập nhật mật khẩu
+                const res = await fetch('http://localhost:9999/api/doi-mat-khau-moi', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ 
+                        tenTK: tenTK, 
+                        newPass: newPass 
+                    })
+                });
+
+                const result = await res.json();
+
+                if (res.ok && result.status === 'success') {
+                    alert("Chúc mừng! Mật khẩu của bạn đã được thay đổi thành công.");
+                    // Xóa dữ liệu tạm thời sau khi xong
+                    sessionStorage.clear();
+                    // Chuyển hướng về trang đăng nhập
+                    window.location.href = 'DangNhapGD.html'; 
+                } else {
+                    alert(result.message || "Có lỗi xảy ra khi đổi mật khẩu!");
+                }
+            } catch (error) {
+                console.error("Lỗi:", error);
+                alert("Lỗi kết nối máy chủ!");
+            } finally {
+                btn.innerText = "Cập nhật mật khẩu →";
+                btn.disabled = false;
+            }
+        });
+    </script>
+</body>
+</html>

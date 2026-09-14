@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+	<title>Phòng Khám AN TÂM</title>
+    <link rel="stylesheet" href="DangkyDangnhapKhoiphuc.css">
+</head>
+
+<body>
+    <div class="card-wrapper">
+        <div class="info-section">
+            <div class="logo-group">
+                <div class="logo-icon">😊</div>
+                <div>
+                    <div><a class="brand-name" href="../PK_TrangChu.html">Phòng khám An Tâm</a></div>
+
+                </div>
+            </div>
+            <h1>Phòng Khám Ngoại Khoa Hiện Đại</h1>
+            <p>Đăng nhập để đặt lịch khám, quản lý hồ sơ sức khỏe và nhận tư vấn từ đội ngũ bác sĩ chuyên nghiệp.</p>
+
+            <div class="benefit-item">✓ Đặt lịch dễ dàng</div>
+            <div class="benefit-item">✓ Theo dõi lịch sử</div>
+            <div class="benefit-item">✓ Tư vấn trực tuyến</div>
+
+            <div class="footer-quote">"Nụ cười tự tin - Sức khỏe trọn vẹn"</div>
+			<p>© 2026 PHÒNG KHÁM AN TÂM. Tất cả quyền được bảo lưu.</p>
+        </div>
+
+        <div class="form-section">
+            <h2>Chào mừng trở lại!</h2>
+
+            <form>
+                <div class="input-group">
+                    <label>Tài khoản:</label><br>
+                    <input type="text" name="tenTK" minlength="8" maxlength="20" placeholder="Nhập tên tài khoản" required>
+                </div>
+                <div class="input-group">
+                    <label>Mật khẩu:</label><br>
+                    <input type="password" placeholder="Nhập mật khẩu" name="matKhau" minlength="6" maxlength="15" required>
+                </div>
+
+                <button type="submit" class="btn-main">Đăng nhập tài khoản →</button>
+            </form>
+        </div>
+
+        <script>
+            document.querySelector('form').addEventListener('submit', function (event) {
+                event.preventDefault();
+                const tenTK = document.querySelector('input[name="tenTK"]').value;
+                const matKhau = document.querySelector('input[name="matKhau"]').value;
+
+                fetch('http://localhost:9999/api/dang-nhap', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ tenTK, matKhau })
+                })
+                    .then(response => {
+                        if (!response.ok) throw new Error("Thông tin đăng nhập không chính xác");
+                        return response.json();
+                    })
+                    .then(data => {
+                        if (data.status === "success") {
+                            sessionStorage.setItem('username', data.username); 
+							sessionStorage.setItem('loaiTK', data.loaiTK);	
+
+
+                            // Điều hướng dựa trên loại tài khoản
+                            if (data.loaiTK === 'KH') {
+                                alert("Chào Khách hàng!");
+                                window.location.href = '../user/KHGD.html'; // File giao diện người dùng bạn vừa tạo
+                            } else if (data.loaiTK === 'LT') {
+                                alert("Chào Lễ tân!");
+                                window.location.href = '../user/LTGD.html';
+                            } else if (data.loaiTK === 'BS') {
+                                alert("Chào Bác sĩ!");
+                                window.location.href = '../user/BSGD.html';
+                            }
+                        }
+                    })
+                    .catch(error => {
+                        alert(error.message);
+                    });
+            });
+        </script>
+    </div>
+</body>
+
+</html>
