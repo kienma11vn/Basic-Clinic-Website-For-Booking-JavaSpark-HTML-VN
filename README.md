@@ -76,7 +76,7 @@ Dự án website quản lý và đặt lịch khám bệnh trực tuyến dành 
  | ----- | ----- | 
 | **🙋‍♂️ Bệnh nhân (Role: `KH`)** | • Đăng ký tài khoản, đăng nhập, khôi phục mật khẩu.  • Tra cứu đội ngũ bác sĩ chuyên khoa và bảng giá dịch vụ.  • Đăng ký đặt lịch khám, chỉnh sửa hoặc hủy lịch hẹn.  • Xem lịch sử lượt đã đến khám và gửi đánh giá dịch vụ. | 
 | **👨‍⚕️ Bác sĩ (Role: `BS`)** | • Xem lịch phân công làm việc / khám bệnh.  • Xem danh sách bệnh nhân đã đăng ký khám.  • Hỗ trợ, giải đáp thắc mắc của bệnh nhân. | 
-| **🛡️ Quản trị viên (Role: `ADMIN`)** | • Duyệt lịch hẹn, xác nhận khách đã đến khám (`XNDenKham`).  • Quản lý danh mục Bác sĩ, Dịch vụ y tế và Hồ sơ khách hàng (CRUD).  • Thống kê doanh thu và lượt khám theo **Ngày**, **Tháng**, **Năm**. | 
+| **🛡️ Lễ tân  (Role: `LT`)** | • Duyệt lịch hẹn, xác nhận khách đã đến khám (`XNDenKham`).  • Quản lý danh mục Bác sĩ, Dịch vụ y tế và Hồ sơ khách hàng (CRUD).  • Thống kê doanh thu và lượt khám theo **Ngày**, **Tháng**, **Năm**. | 
 
 ## ⚙️ 4. Hướng Dẫn Cài Đặt & Khởi Chạy
 
