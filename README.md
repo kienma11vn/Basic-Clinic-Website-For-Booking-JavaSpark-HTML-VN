@@ -1,6 +1,6 @@
 # 🏥 Hệ Thống Đặt Lịch Khám Bệnh - PHÒNG KHÁM AN TÂM
 
-Dự án website quản lý và đặt lịch khám bệnh trực tuyến dành cho **Phòng Khám An Tâm**. Đây là ứng dụng được xây dựng phục vụ **mục đích giáo dục và học tập**, minh họa mô hình kiến trúc Web Service chuẩn kết hợp giữa Backend bằng **Java Spark** (RESTful API) và Frontend thuần (**HTML5 / CSS3 / JavaScript**).
+Dự án website quản lý và đặt lịch khám bệnh trực tuyến dành cho **Phòng Khám An Tâm**. Đây là ứng dụng được xây dựng phục vụ **mục đích giáo dục và học tập** phục vụ cho hệ thống quản lý trong lĩnh vực y tế, minh họa mô hình kiến trúc Web Service chuẩn kết hợp giữa Backend bằng **Java Spark** (RESTful API) và Frontend thuần (**HTML5 / CSS3 / JavaScript**).
 
 <img width="1366" height="637" alt="image" src="https://github.com/user-attachments/assets/baceaa04-446d-4ae2-8214-c2164c9e05fd" />
 <img width="1366" height="607" alt="image" src="https://github.com/user-attachments/assets/2ae4d85a-b2ce-4918-bba3-21b1059c7ddb" />
